@@ -1,26 +1,201 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/* ---------------------------------------------------------------------------
+   Tailish design tokens
+   Palette derived from the brand logo, website mockup and merchandise.
+   Light mode is primary; "dark" sections are deep-teal surfaces, not a theme.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* Brand teal ramp */
+  --color-brand-50: #eaf2f1;
+  --color-brand-100: #d6e6e4;
+  --color-brand-200: #aecdcb;
+  --color-brand-300: #7fb0b1;
+  --color-brand-400: #4e9298;
+  --color-brand-500: #2e7a82;
+  --color-brand-600: #22676f;
+  --color-brand-700: #1a5a63;
+  --color-brand-800: #134a52;
+  --color-brand-900: #0f3f44;
+  --color-brand-950: #0a2b2f;
+
+  /* Accent orange — primary calls to action */
+  --color-accent-50: #fdf2ec;
+  --color-accent-100: #fae0d1;
+  --color-accent-200: #f4bf9f;
+  --color-accent-300: #ef9c6c;
+  --color-accent-400: #ec8449;
+  --color-accent-500: #e86e2b;
+  --color-accent-600: #d15f20;
+  --color-accent-700: #ae4e1a;
+
+  /* Gold — dividers, badges, premium highlights */
+  --color-gold-400: #d9ae53;
+  --color-gold-500: #c8972f;
+  --color-gold-600: #a97d22;
+
+  /* Neutrals */
+  --color-cream: #f7f4ee;
+  --color-ink: #14323a;
+  --color-muted: #5a6b70;
+  --color-hairline: #e3e8e8;
+
+  /* WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  /* Accent face, loaded in italic only — reserved for the one highlighted
+     line inside a display heading, never for running text. */
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Radii — generously rounded, per the mockups */
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  /* Soft, diffuse elevation */
+  --shadow-soft: 0 1px 2px rgb(15 63 68 / 0.04), 0 8px 24px -8px rgb(15 63 68 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(15 63 68 / 0.05), 0 18px 40px -12px rgb(15 63 68 / 0.18);
+  --shadow-ring: 0 0 0 1px rgb(15 63 68 / 0.06);
+
+  /* Section rhythm */
+  --spacing-section: 6rem;
+}
+
+/* Author-facing aliases matching the brand spec sheet. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --teal-900: var(--color-brand-900);
+  --teal-700: var(--color-brand-700);
+  --teal-500: var(--color-brand-500);
+  --teal-50: var(--color-brand-50);
+  --orange-500: var(--color-accent-500);
+  --orange-600: var(--color-accent-600);
+  --gold-500: var(--color-gold-500);
+  --cream: var(--color-cream);
+  --ink: var(--color-ink);
+  --slate: var(--color-muted);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor targets so the sticky header never covers a heading. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* A single, consistent focus ring across every interactive surface. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Keep numerals aligned in tables, prices and stat bands. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Reveal-on-scroll. Elements start hidden and are released by the
+     IntersectionObserver in <Reveal>; see components/motion/reveal.tsx. */
+  /* No `will-change` here: it is applied to dozens of elements per page, and
+     promoting that many compositor layers costs more than the animation saves. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal[data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Paw-print texture used behind deep-teal bands. */
+  .paw-field {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgb(255 255 255 / 0.07) 1px,
+      transparent 0
+    );
+    background-size: 28px 28px;
+  }
+}
+
+/* Honour the OS "reduce motion" setting everywhere, including the
+   reveal utilities above, which are otherwise CSS-driven. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Slimmer scrollbars inside horizontal carousels. */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-200) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand-200);
+  border-radius: 999px;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

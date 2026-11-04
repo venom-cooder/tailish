@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 950" width="1600" height="950" role="img">
+<defs><linearGradient id="wall" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#F2E7D6"/><stop offset="1" stop-color="#E3D2BA"/></linearGradient><linearGradient id="couch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3EADC"/><stop offset="1" stop-color="#DFCFB6"/></linearGradient><linearGradient id="cushion" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#D8E2DD"/><stop offset="1" stop-color="#B3C7C1"/></linearGradient><linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8D9BE"/><stop offset="1" stop-color="#CDB894"/></linearGradient><radialGradient id="window"><stop offset="0" stop-color="#FFF8EC" stop-opacity="0.95"/><stop offset="0.55" stop-color="#FDEFD8" stop-opacity="0.45"/><stop offset="1" stop-color="#FDEFD8" stop-opacity="0"/></radialGradient><radialGradient id="warm"><stop offset="0" stop-color="#C8972F" stop-opacity="0.22"/><stop offset="1" stop-color="#C8972F" stop-opacity="0"/></radialGradient><linearGradient id="calm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F7F4EE" stop-opacity="0.72"/><stop offset="0.3" stop-color="#F7F4EE" stop-opacity="0.52"/><stop offset="0.62" stop-color="#F7F4EE" stop-opacity="0"/></linearGradient></defs>
+
+  <rect width="1600" height="950" fill="url(#wall)"/>
+  <circle cx="1180" cy="120" r="420" fill="url(#window)"/>
+  <circle cx="900" cy="700" r="520" fill="url(#warm)"/>
+
+  <!-- window frame -->
+  <g opacity="0.5">
+    <rect x="1010" y="-40" width="340" height="430" rx="18" fill="#FFF9EE" opacity="0.65"/>
+    <path d="M1180-40v430M1010 175h340" stroke="#C9B493" stroke-width="9"/>
+    <rect x="1010" y="-40" width="340" height="430" rx="18" fill="none" stroke="#C9B493" stroke-width="12"/>
+  </g>
+
+  
+  <g transform="translate(1490 430) scale(1.15 1.15)">
+    <path d="M0 0c-4-46-30-74-62-84 34-4 58 12 66 44Z" fill="#4E7A5E"/>
+    <path d="M0 0c6-44 34-68 68-74-32-10-60 6-72 38Z" fill="#3E6A4E"/>
+    <path d="M0 0c-30-34-28-72-8-100-26 18-34 56-16 92Z" fill="#59896A"/>
+    <path d="M0 0c26-30 64-32 92-18-22-24-62-24-88 4Z" fill="#456F55"/>
+    <path d="M-6 0h12l-4 46h-4Z" fill="#8A6A47"/>
+  </g>
+  
+  <g transform="translate(760 330) scale(-0.62 0.62)">
+    <path d="M0 0c-4-46-30-74-62-84 34-4 58 12 66 44Z" fill="#4E7A5E"/>
+    <path d="M0 0c6-44 34-68 68-74-32-10-60 6-72 38Z" fill="#3E6A4E"/>
+    <path d="M0 0c-30-34-28-72-8-100-26 18-34 56-16 92Z" fill="#59896A"/>
+    <path d="M0 0c26-30 64-32 92-18-22-24-62-24-88 4Z" fill="#456F55"/>
+    <path d="M-6 0h12l-4 46h-4Z" fill="#8A6A47"/>
+  </g>
+
+  <!-- floor + couch -->
+  <rect y="720" width="1600" height="230" fill="url(#floor)"/>
+  <rect x="640" y="560" width="1010" height="230" rx="54" fill="url(#couch)"/>
+  <rect x="690" y="470" width="900" height="150" rx="46" fill="#EADCC6"/>
+  <g>
+    <rect x="735" y="455" width="190" height="165" rx="40" fill="url(#cushion)" transform="rotate(-7 830 537)"/>
+    <rect x="1370" y="462" width="180" height="158" rx="38" fill="#EFD9C3" transform="rotate(6 1460 541)"/>
+  </g>
+  <!-- blanket the pets rest on -->
+  <path d="M700 700c140-46 420-60 640-26 128 20 212 18 268-6v98H700Z" fill="#F6EFE3"/>
+
+  <g transform="translate(699.5884773662551 6.259216392318244) rotate(180.91203703703707) scale(0.1689281550068587)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(439.69821673525377 220.4164523319616) rotate(114.65895061728396) scale(0.12861574074074075)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(884.3347050754458 911.528420781893) rotate(313.59104938271605) scale(0.17760373799725654)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(295.22633744855966 378.9778377914952) rotate(106.59722222222221) scale(0.18453412208504802)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(430.39780521262 159.18445644718793) rotate(209.23302469135803) scale(0.1995303497942387)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(1566.3923182441702 803.3828446502058) rotate(163.72067901234567) scale(0.20530847050754458)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(187.16049382716048 188.7334962277092) rotate(338.9490740740741) scale(0.1016215706447188)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(539.6159122085048 62.76727537722908) rotate(210.4737654320988) scale(0.20303755144032923)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(55.857338820301784 871.1631944444445) rotate(120.51697530864199) scale(0.1500502400548697)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(1442.0576131687244 68.85952503429355) rotate(37.967592592592595) scale(0.15352383401920439)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(234.01920438957475 564.4982424554183) rotate(358.3811728395062) scale(0.2324706790123457)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(619.3964334705075 798.2028034979425) rotate(63.97993827160494) scale(0.10516237997256517)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(326.5843621399177 652.6892575445817) rotate(163.65277777777777) scale(0.15357424554183813)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(580.2743484224966 397.71069101508914) rotate(172.95524691358025) scale(0.1011630658436214)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(1123.676268861454 267.83500514403295) rotate(234.10956790123456) scale(0.16397822359396436)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g><g transform="translate(1107.4074074074074 673.5560270919068) rotate(236.00462962962962) scale(0.19510613854595338)" fill="#FFFFFF" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g>
+
+  <!-- dog -->
+  <g>
+    <ellipse cx="1065" cy="742" rx="196" ry="56" fill="#B8853F" opacity="0.14"/>
+    <path d="M905 742c0-104 72-168 160-168s160 64 160 168Z" fill="#D9A867"/>
+    <path d="M940 742c0-72 50-116 125-116s125 44 125 116Z" fill="#E7BE84" opacity="0.65"/>
+    <ellipse cx="930" cy="736" rx="46" ry="26" fill="#D9A867"/>
+    <ellipse cx="1200" cy="736" rx="46" ry="26" fill="#D9A867"/>
+    <path d="M912 728c0-9 8-14 18-14s18 5 18 14M952 728c0-9 8-14 18-14s18 5 18 14" stroke="#B8853F" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55"/>
+  </g>
+  <g transform="translate(1065 480) scale(3.2) translate(-50 -50)">
+    <path d="M18 30c-6-10-4-21 3-22 6-1 12 6 14 13Z" fill="#B8853F"/>
+    <path d="M82 30c6-10 4-21-3-22-6-1-12 6-14 13Z" fill="#B8853F"/>
+    <path d="M50 14c17 0 29 12 29 29 0 20-13 36-29 36S21 63 21 43c0-17 12-29 29-29Z" fill="#D9A867"/>
+    <ellipse cx="50" cy="60" rx="15" ry="12" fill="#E8D9BE"/>
+    <ellipse cx="50" cy="52" rx="5.5" ry="4.2" fill="#0F3F44"/>
+    <path d="M50 56v5m0 0c0 3-3 4.5-5.5 3.5M50 61c0 3 3 4.5 5.5 3.5" stroke="#0F3F44" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <ellipse cx="38" cy="39" rx="4" ry="4.6" fill="#0F3F44"/>
+    <ellipse cx="62" cy="39" rx="4" ry="4.6" fill="#0F3F44"/>
+    <circle cx="39.4" cy="37.4" r="1.4" fill="#FFFFFF"/>
+    <circle cx="63.4" cy="37.4" r="1.4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- cat, tucked beside the dog -->
+  <g>
+    <ellipse cx="1372" cy="748" rx="140" ry="42" fill="#7A878C" opacity="0.14"/>
+    <path d="M1258 748c0-74 52-120 114-120s114 46 114 120Z" fill="#9AA7AC"/>
+    <path d="M1286 748c0-52 36-84 86-84s86 32 86 84Z" fill="#B0BBBF" opacity="0.6"/>
+    <path d="M1470 742c48-6 76-30 82-62 2-10-12-16-18-7-12 20-32 33-64 37Z" fill="#9AA7AC"/>
+  </g>
+  <g transform="translate(1372 548) scale(2.3) translate(-50 -50)">
+    <path d="M24 34 22 12l19 11Z" fill="#9AA7AC"/>
+    <path d="M76 34 78 12 59 23Z" fill="#9AA7AC"/>
+    <path d="M27 31 26 19l10 6Z" fill="#7A878C"/>
+    <path d="M73 31 74 19l-10 6Z" fill="#7A878C"/>
+    <path d="M50 20c16 0 28 12 28 27s-12 28-28 28-28-13-28-28 12-27 28-27Z" fill="#9AA7AC"/>
+    <ellipse cx="50" cy="58" rx="12" ry="9" fill="#F7F4EE"/>
+    <path d="M50 50.5 46 55h8Z" fill="#0F3F44"/>
+    <path d="M50 55v4m0 0c0 2.6-2.8 4-5 3M50 59c0 2.6 2.8 4 5 3" stroke="#0F3F44" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <ellipse cx="38" cy="42" rx="4.6" ry="5.4" fill="#0F3F44"/>
+    <ellipse cx="62" cy="42" rx="4.6" ry="5.4" fill="#0F3F44"/>
+    <circle cx="39.6" cy="40.2" r="1.5" fill="#FFFFFF"/>
+    <circle cx="63.6" cy="40.2" r="1.5" fill="#FFFFFF"/>
+    <path d="M30 56h-12M30 60h-11M70 56h12M70 60h11" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <!-- Left-hand cream field, keeping the headline area calm. A gradient rather
+       than a hard-edged rect: a flat one leaves a visible vertical seam down
+       the middle of the scene. -->
+  <rect width="1600" height="950" fill="url(#calm)"/>
+  <g transform="translate(150 760) rotate(-14) scale(1.5)" fill="#C8972F" opacity="0.1">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g>
+  <g transform="translate(330 120) rotate(20) scale(1.1)" fill="#C8972F" opacity="0.08">
+    <ellipse cx="30" cy="32" rx="9.5" ry="12.5" transform="rotate(-18 30 32)"/>
+    <ellipse cx="50" cy="24" rx="9.5" ry="13" />
+    <ellipse cx="70" cy="32" rx="9.5" ry="12.5" transform="rotate(18 70 32)"/>
+    <path d="M50 46c12 0 22 8.5 22 17.8 0 7.3-6.3 11.6-14 11.6-3.1 0-5.4-.8-8-.8s-4.9.8-8 .8c-7.7 0-14-4.3-14-11.6C28 54.5 38 46 50 46Z"/>
+  </g>
+</svg>
