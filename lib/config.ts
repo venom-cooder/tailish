@@ -37,6 +37,22 @@ export const siteConfig = {
   phone: "+91 98765 43210",
   address: "Vijay Nagar, Indore, Madhya Pradesh 452010",
   supportHours: "8:00 AM – 10:00 PM, all days",
+
+  /**
+   * Details that appear in the Privacy Policy and Terms.
+   *
+   * Kept here so the two legal pages can never drift from each other. Replace
+   * `entity`, `grievanceOfficer` and `jurisdiction` with the registered
+   * particulars before publishing — these are the values a regulator, a carrier
+   * reviewing an SMS campaign, or a user filing a complaint will rely on.
+   */
+  legal: {
+    entity: "Tailish Pet Care Private Limited",
+    /** Named contact required of Indian intermediaries. Must be a real person. */
+    grievanceOfficer: "Grievance Officer",
+    jurisdiction: "Indore, Madhya Pradesh, India",
+    effectiveDate: "4 November 2026",
+  },
   social: {
     instagram: "https://instagram.com/tailish.care",
     facebook: "https://facebook.com/tailish.care",

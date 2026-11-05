@@ -112,9 +112,17 @@ export function Prose({ body, className }: { body: string; className?: string })
           );
         }
 
+        // A single newline inside a paragraph is a line break, not a space:
+        // address and contact blocks are written one field per line and would
+        // otherwise run together into a single sentence.
         return (
           <p key={key} className="text-[0.9375rem] leading-relaxed text-muted sm:text-base">
-            {renderInline(block, key)}
+            {lines.map((line, lineIndex) => (
+              <React.Fragment key={`${key}-${lineIndex}`}>
+                {lineIndex > 0 ? <br /> : null}
+                {renderInline(line, `${key}-${lineIndex}`)}
+              </React.Fragment>
+            ))}
           </p>
         );
       })}

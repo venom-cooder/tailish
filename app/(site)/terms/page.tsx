@@ -6,80 +6,312 @@ import { Prose } from "@/components/shared/prose";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Terms of service",
+  title: "Terms & conditions",
   description:
-    "The terms governing use of Tailish — what we provide, what we don't, cancellations, shop orders, and the limits of our liability.",
+    "The terms governing use of Tailish — what we provide, the limits of AI guidance, SMS and WhatsApp messaging terms, paid services, and liability.",
   alternates: { canonical: "/terms" },
 };
 
-const LAST_UPDATED = "1 October 2026";
+const { legal } = siteConfig;
 
-const body = `These terms govern your use of tailish.in, the Tailish portal and the Tailish WhatsApp service, all operated by Tailish Pet Care Private Limited. By using any of them, you agree to what follows.
+const body = `**Legal entity:** ${legal.entity}
+**Brand:** Tailish AI Pet Care
+**Website:** ${siteConfig.url}
 
-## What Tailish is, and isn't
+## 1. Acceptance of terms
 
-Tailish is a platform that connects pet parents with independently registered veterinarians, maintains health records, and sells pet products. **Tailish does not itself practise veterinary medicine.** Veterinarians on the platform exercise their own clinical judgement and are responsible for the care they provide.
+Welcome to Tailish AI Pet Care ("Tailish", "we", "us" or "our").
 
-Nothing on this site, in the portal, or in Ask Tailish constitutes a diagnosis or a substitute for an in-person veterinary examination. Guidance is general in nature. Clinical decisions about your pet belong to a veterinarian who has examined them.
+These Terms & Conditions ("Terms") govern your access to and use of our website, AI-powered pet care assistant, messaging services, applications, content, and related products or services.
 
-**In an emergency, go directly to a veterinary hospital.** Do not wait for a response from Tailish.
+By accessing or using Tailish, you agree to these Terms. If you do not agree, please discontinue use of the relevant services.
 
-## Your account
+These Terms should be read together with our [Privacy Policy](/privacy).
 
-- You must be 18 or older to hold an account.
-- The information you give us about yourself and your pets must be accurate. Clinical decisions get made on the basis of it.
-- You are responsible for activity on your account, and for who you grant delegate access to.
-- Tell us promptly if you believe your account has been accessed without your permission.
+Your agreement to these Terms does not automatically constitute consent to receive optional SMS or promotional communications.
 
-## Bookings, payments and cancellations
+## 2. About Tailish
 
-- Prices are shown before you confirm. Anything additional during a visit is quoted and agreed before it happens.
-- Payment is collected through Razorpay. We do not store card details.
-- **Cancel or reschedule free up to two hours before** a booked slot. Inside two hours, or where a vet has already travelled to you, a cancellation fee of up to 50% of the consultation fee may apply.
-- If Tailish cancels a visit, you are refunded in full.
-- Prescriptions are issued at the veterinarian's discretion. Some medicines legally require an in-person examination, and no vet on this platform will issue them without one.
+Tailish is an AI-powered pet care companion designed to help pet parents organise everyday pet care and access general information.
 
-## The Health Passport
+Depending on availability, services may include:
 
-Records in the Health Passport are provided for your benefit and your veterinarian's. Each record is labelled with its source. Records marked **parent entered** or **draft** have not been clinically verified, and should not be relied on as if they had been.
+- AI-powered pet care conversations.
+- General pet wellness and nutrition guidance.
+- Personalised pet profiles.
+- Vaccination and preventive-care reminders.
+- Pet lifestyle and activity suggestions.
+- General behavioural and training information.
+- Assistance discovering veterinarians, groomers, trainers and other pet services.
+- Customer support and service notifications.
+- Additional pet-related products and services introduced in the future.
 
-You own your pet's data. You can export it or delete it at any time, subject to the retention periods in our privacy policy.
+Individual features may vary by location, channel, availability, subscription and product development stage.
 
-Share links you create are your responsibility. Anyone holding a valid link can view the sections you shared until it expires or you revoke it.
+## 3. Eligibility and account responsibility
 
-## Shop orders
+Users must be at least 18 years old, or have appropriate parental or guardian authorisation to use the service, subject to applicable law.
 
-- Orders are accepted subject to stock. If something is unavailable we will tell you and refund it.
-- Delivery is free above ₹1,499 and ₹49 below. Delivery times are estimates, not guarantees.
-- **Returns:** unopened, undamaged products may be returned within 7 days of delivery. For reasons of safety we cannot accept returns of opened food, opened medication, or any prescription item.
-- **Prescription products** require a valid prescription, which we verify before dispatch.
-- Products marked "sponsored" are paid placements. They are labelled wherever they appear, and placement never changes a veterinarian's clinical advice.
+By using Tailish, you agree to provide accurate and relevant information.
 
-## Membership
+You are responsible for:
 
-Memberships run for the period purchased and renew only if you choose. You may cancel at any time from your profile; access continues until the end of the paid period. Included benefits — consults, visits, wellness panels — do not carry over between periods.
+- Maintaining accurate contact and pet profile details.
+- Reviewing information before relying on it.
+- Protecting access to your devices and accounts.
+- Notifying Tailish of unauthorised account activity.
+- Using the platform lawfully and responsibly.
 
-## Acceptable use
+We may restrict or suspend access where reasonably necessary to address misuse, security risks or violations of these Terms.
 
-Don't use Tailish to misrepresent yourself or your pet, to obtain medication by deception, to abuse our staff or the veterinarians on the platform, or to scrape, reverse-engineer or disrupt the service. We may suspend accounts that do.
+## 4. Important veterinary and medical disclaimer
 
-## Liability
+**Tailish is an AI-powered informational assistant, not a veterinary clinic, veterinarian, animal hospital or emergency medical service.**
 
-To the extent permitted by law, Tailish's liability for any claim relating to the platform is limited to the amount you paid us for the service in question. We are not liable for the clinical judgement of independent veterinarians, for outcomes of care, or for indirect or consequential losses.
+Tailish does not replace professional veterinary examination, diagnosis, treatment or medical judgement.
 
-Nothing here limits liability for death or personal injury caused by negligence, or for fraud.
+Information generated by Tailish may be incomplete, incorrect, outdated or unsuitable for an individual animal.
 
-## Changes and governing law
+Tailish does not independently prescribe medication, determine medication dosages, diagnose diseases or authorise treatment.
 
-We may change these terms, and will post the updated version here with a new date. Material changes will be notified to you directly. Continued use after a change means you accept it.
+General information concerning nutrition, vaccination, preventive care, supplements, symptoms and pet behaviour should be assessed in light of the individual pet's needs and professional veterinary advice.
 
-These terms are governed by the laws of India, and the courts at Indore, Madhya Pradesh have exclusive jurisdiction.
+**For emergencies, seek immediate veterinary assistance.**
 
-## Contact
+Potential emergencies include breathing difficulties, collapse, seizures, suspected poisoning, severe injury, uncontrolled bleeding, or other serious or rapidly worsening symptoms.
 
-Tailish Pet Care Private Limited
-${siteConfig.address}
-${siteConfig.email} · ${siteConfig.phone}`;
+**Do not delay veterinary care while waiting for an AI response.**
+
+Where users submit existing veterinary prescriptions or medical records, Tailish may help organise or explain general information, but should not be treated as an independent verification of medical instructions.
+
+## 5. Artificial intelligence limitations
+
+Tailish may use third-party or internally operated AI systems to generate responses.
+
+By using AI-enabled features, you acknowledge that:
+
+- AI responses are generated automatically.
+- Outputs may contain factual or contextual errors.
+- Different responses may be produced for similar questions.
+- AI cannot guarantee identification of every dangerous condition.
+- Recommendations should not be treated as professional veterinary opinions.
+- Human review of every conversation is not guaranteed.
+
+Users remain responsible for seeking qualified professional advice before making decisions that may affect an animal's health or safety.
+
+Tailish may apply safeguards, restrict certain responses, recommend veterinary escalation, or decline requests that could create safety risks.
+
+## 6. Pet profiles and user-provided information
+
+Users may voluntarily provide information concerning their pets, including breed, age, weight, diet, vaccination history, symptoms and other relevant details.
+
+By submitting information, you confirm that you are authorised to provide it and that it is accurate to the best of your knowledge.
+
+Tailish may use this information to personalise available services and maintain continuity between interactions.
+
+You remain responsible for reviewing and updating your pet's information when circumstances change.
+
+## 7. Reminders and notifications
+
+Tailish may offer reminders for vaccinations, wellness check-ins, preventive care, appointments or other pet-related activities.
+
+Reminder delivery may depend on:
+
+- The accuracy of the information provided.
+- Communication permissions.
+- Connectivity and platform availability.
+- The availability of the reminder feature.
+- Third-party communication systems.
+
+Reminders are convenience tools and do not replace a veterinary care plan.
+
+Users are responsible for independently tracking time-sensitive veterinary care and appointments.
+
+## 8. SMS messaging terms
+
+**Programme name:** Tailish AI Pet Care
+
+**Programme description.** The Tailish SMS messaging programme provides opted-in users with customer support communications, pet wellness reminders, vaccination reminders, account updates and relevant service notifications.
+
+Messages are sent only where the applicable user consent or other lawful authorisation has been obtained.
+
+**Consent.** Users may voluntarily opt in through an approved consent method, such as an expressly selected checkbox on our website or another documented enrolment process.
+
+SMS consent is separate from acceptance of these Terms. Consent to receive SMS is not a condition of purchasing goods or services, or of accessing unrelated Tailish features.
+
+**Message frequency.** Message frequency varies based on selected reminders, account activity and user enquiries. Messages may be recurring.
+
+**Charges.** Message and data rates may apply. Your mobile service provider may charge you according to your plan.
+
+**Opt-out.** Reply **STOP** to any Tailish SMS message to unsubscribe from the applicable messaging programme.
+
+After processing the opt-out request, we may send a final confirmation message. No further messages will be sent under that opted-out programme unless you provide new valid consent or another legally permitted basis applies.
+
+**Help.** Reply **HELP** to a Tailish SMS message for assistance. You may also contact our support team at ${siteConfig.email}.
+
+**Carrier disclaimer.** Carriers are not liable for any delayed or undelivered messages. Delivery depends on network coverage, carrier operations and other factors outside Tailish's reasonable control.
+
+**Privacy.** Information collected through the messaging programme is handled according to our [Privacy Policy](/privacy). We do not sell or share SMS opt-in information or personal information with third parties for their marketing purposes.
+
+## 9. WhatsApp messaging terms
+
+Tailish may provide services through WhatsApp and the WhatsApp Business Platform.
+
+Users may initiate conversations or opt in to receive permitted notifications.
+
+Communications may include:
+
+- AI-powered pet care assistance.
+- Responses to customer questions.
+- Pet care and vaccination reminders.
+- Requested service notifications.
+- Follow-ups related to user interactions.
+- Optional promotional messages where separately authorised.
+
+Business-initiated WhatsApp communications are subject to applicable consent rules and Meta's messaging policies.
+
+Users may request cessation of optional Tailish WhatsApp messages by sending an appropriate opt-out request or using WhatsApp's available controls.
+
+WhatsApp service availability, delivery and technical functionality depend partly on Meta and associated infrastructure providers.
+
+## 10. Third-party veterinary and pet services
+
+Tailish may provide information about independent veterinary clinics, pet hospitals, groomers, trainers, pet stores, boarding facilities and other pet-related providers.
+
+Unless expressly stated otherwise, such providers operate independently from Tailish.
+
+Tailish does not automatically endorse, certify, employ or supervise every listed provider.
+
+Service descriptions, pricing, qualifications, availability, operating hours and other details may change.
+
+Users should independently verify provider qualifications, suitability, pricing and terms before obtaining a service.
+
+Any agreement with an independent provider may be subject to that provider's own terms and policies.
+
+Tailish is not responsible for the professional conduct of independent providers, except to the extent responsibility cannot lawfully be excluded.
+
+## 11. Paid products, subscriptions and services
+
+Certain Tailish services may become available through paid plans, subscriptions, bookings or product purchases.
+
+Where offered, applicable prices, inclusions, billing frequency, taxes and material payment terms will be disclosed before purchase.
+
+Additional terms may apply to individual services.
+
+Recurring charges will require the appropriate authorisation and disclosures.
+
+Refunds, cancellations and renewals will be governed by the applicable purchase terms, the published refund or cancellation policy, and mandatory consumer protection laws.
+
+Tailish will not assume that users consent to recurring payments merely by accessing a free service.
+
+## 12. Acceptable use
+
+Users agree not to:
+
+- Use Tailish for unlawful, fraudulent, abusive or misleading purposes.
+- Submit content that violates another person's rights.
+- Attempt unauthorised access to accounts or systems.
+- Distribute malicious software or interfere with platform security.
+- Use automated systems to overload or abuse the service.
+- Misrepresent AI-generated information as verified veterinary advice.
+- Use Tailish to facilitate animal cruelty or other unlawful harmful activity.
+- Infringe intellectual property or privacy rights.
+
+We may take proportionate steps to prevent abuse, protect users and maintain service integrity.
+
+## 13. Intellectual property
+
+The Tailish name, branding, software, interface designs, original content and other proprietary materials are owned by or licensed to the applicable Tailish operator.
+
+Users receive a limited, non-exclusive, revocable right to access the services for permitted purposes, subject to applicable law.
+
+You retain ownership of content you lawfully submit.
+
+You grant Tailish permission to process, store, reproduce and use submitted content only as reasonably necessary to deliver and operate the services, subject to our [Privacy Policy](/privacy) and applicable law.
+
+Users may not reproduce, commercially exploit or redistribute proprietary Tailish materials without permission, except as legally permitted.
+
+## 14. Availability and service changes
+
+We aim to provide reliable access to Tailish but do not guarantee uninterrupted availability.
+
+Services may be affected by:
+
+- Scheduled maintenance.
+- Internet or cloud infrastructure failures.
+- Messaging platform restrictions.
+- AI provider outages.
+- Security incidents.
+- Changes in laws or platform policies.
+
+We may modify, suspend or discontinue features for operational, safety, commercial or legal reasons.
+
+Where required, users will receive appropriate notice or remedies.
+
+## 15. Disclaimer of warranties
+
+To the extent permitted by applicable law, Tailish provides informational and digital services on an "as available" basis.
+
+We do not guarantee that every recommendation, reminder, AI response, provider listing or service outcome will be accurate, complete, uninterrupted or suitable for every user.
+
+Nothing in these Terms excludes guarantees, warranties, rights or remedies that cannot legally be excluded under applicable consumer protection law.
+
+## 16. Limitation of liability
+
+To the extent permitted by applicable law, Tailish is not responsible for losses resulting solely from factors outside its reasonable control, including third-party platform interruptions, or decisions made independently without appropriate professional veterinary advice.
+
+Any limitation of liability will apply only to the extent enforceable under applicable law.
+
+These Terms do not exclude liability for fraud, intentional misconduct, negligence, or other matters where exclusion is prohibited by law, nor do they override mandatory consumer rights.
+
+## 17. Privacy and data protection
+
+Use of Tailish may involve processing personal information and user-submitted pet information.
+
+Our data practices are described in the [Privacy Policy](/privacy).
+
+Messaging preferences, optional promotional consent and privacy rights are handled separately from general acceptance of these Terms.
+
+## 18. Suspension and termination
+
+Users may stop using Tailish at any time.
+
+Where supported, users may request account closure and deletion of eligible personal information.
+
+Tailish may restrict, suspend or terminate access in response to unlawful conduct, serious security risks, persistent misuse or material violations of these Terms.
+
+Such decisions will remain subject to applicable law and user rights.
+
+## 19. Changes to these Terms
+
+We may revise these Terms to reflect changes in our services, operational requirements or applicable law.
+
+Updated Terms will be made available on our website with a revised date.
+
+Where legally required, we will provide additional notice or request acceptance before material changes take effect.
+
+## 20. Governing law and disputes
+
+These Terms are governed by the applicable laws of India, subject to mandatory rights and protections available to users in other relevant jurisdictions.
+
+Any disputes will be addressed through applicable legal processes and competent courts or consumer dispute resolution authorities.
+
+For disputes governed by Indian law, the courts at ${legal.jurisdiction} will have jurisdiction to the extent legally permissible, without restricting mandatory consumer remedies.
+
+## 21. Contact information
+
+For questions concerning Tailish services, SMS communications, account issues or these Terms, contact:
+
+**Tailish AI Pet Care**
+Legal entity: ${legal.entity}
+Registered address: ${siteConfig.address}
+Customer support: ${siteConfig.email}
+Website: ${siteConfig.url}
+
+**SMS assistance:** reply HELP
+**SMS unsubscribe:** reply STOP
+
+Tailish AI Pet Care — helping pet parents make more informed everyday care decisions.`;
 
 export default function TermsPage() {
   return (
@@ -88,8 +320,8 @@ export default function TermsPage() {
         eyebrow="Legal"
         eyebrowIcon={Scale}
         crumbs={[{ label: "Terms" }]}
-        title="Terms of service"
-        description={`Last updated ${LAST_UPDATED}`}
+        title="Terms & conditions"
+        description={`Effective ${legal.effectiveDate} · Last updated ${legal.effectiveDate}`}
       />
 
       <Section className="py-14">
