@@ -259,7 +259,7 @@ export const passportApi = {
         const shareToken = `${pet.passportId.toLowerCase().replace("-", "")}${nextId("s")}`;
         const link: ShareLink = {
           shareToken,
-          url: `${SITE_URL}/p/${shareToken}`,
+          url: `${SITE_URL}/p/?t=${shareToken}`,
           petId,
           expiresAt: `${addDays(expiresInDays)}T23:59:59.000Z`,
           scope,

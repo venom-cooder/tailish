@@ -1,15 +1,24 @@
 "use client";
 
-import { use } from "react";
+import { Suspense } from "react";
 import { PortalHeader } from "@/components/portal/portal-shell";
 import { PetForm } from "@/components/portal/pet-form";
 import { ErrorState, LoadingState } from "@/components/shared/states";
 import { api } from "@/lib/api";
 import { useAsync } from "@/lib/hooks/use-async";
+import { useRouteParam } from "@/lib/hooks/use-route-param";
 import type { Pet } from "@/lib/types";
 
-export default function EditPetPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function EditPetPage() {
+  return (
+    <Suspense fallback={<LoadingState label="Loading pet details" rows={4} />}>
+      <EditPetBody />
+    </Suspense>
+  );
+}
+
+function EditPetBody() {
+  const id = useRouteParam("id");
   const pet = useAsync<Pet>(() => api.pets.get(id), [id]);
 
   return (
@@ -17,7 +26,7 @@ export default function EditPetPage({ params }: { params: Promise<{ id: string }
       <PortalHeader
         title={pet.data ? `Edit ${pet.data.name}` : "Edit pet"}
         description="Changes are recorded as parent entered until a vet verifies them."
-        backHref={`/app/pets/${id}`}
+        backHref={`/app/pet?id=${id}`}
       />
 
       <div className="max-w-3xl">

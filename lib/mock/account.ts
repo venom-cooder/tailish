@@ -129,7 +129,7 @@ export const mockNotifications: AppNotification[] = [
     category: "visit",
     createdAt: at(-3, 17, 40),
     read: false,
-    href: "/app/pets/pet_01",
+    href: "/app/pet/?id=pet_01",
   },
   {
     id: "ntf_03",
@@ -147,7 +147,7 @@ export const mockNotifications: AppNotification[] = [
     category: "passport",
     createdAt: at(-9, 11, 20),
     read: true,
-    href: "/app/pets/pet_01",
+    href: "/app/pet/?id=pet_01",
   },
   {
     id: "ntf_05",

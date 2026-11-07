@@ -62,7 +62,7 @@ export default function PetsPage() {
           {pets.data?.map((pet) => (
             <Link
               key={pet.id}
-              href={`/app/pets/${pet.id}`}
+              href={`/app/pet/?id=${pet.id}`}
               className="group overflow-hidden rounded-3xl border border-hairline bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-lift"
             >
               <div className="relative aspect-[5/3] overflow-hidden bg-brand-50">

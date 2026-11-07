@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, Download, Loader2, MapPin, Package, RotateCcw, Truck } from "lucide-react";
@@ -17,12 +17,21 @@ import {
 } from "@/components/portal/order-status";
 import { api } from "@/lib/api";
 import { useAsync, useMutation } from "@/lib/hooks/use-async";
+import { useRouteParam } from "@/lib/hooks/use-route-param";
 import type { Order } from "@/lib/types";
 import { whatsappMessages } from "@/lib/whatsapp";
 import { cn, formatDate, formatINR } from "@/lib/utils";
 
-export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function OrderDetailPage() {
+  return (
+    <Suspense fallback={<LoadingState label="Loading order" rows={4} />}>
+      <OrderDetailBody />
+    </Suspense>
+  );
+}
+
+function OrderDetailBody() {
+  const id = useRouteParam("id");
   const order = useAsync<Order>(() => api.commerce.getOrder(id), [id]);
   const { setOpen } = useCart();
 

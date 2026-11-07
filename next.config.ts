@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // AxisIQ Sites serves the repository's files as-is — it runs no build step —
+  // so the site ships as a static export and every page must be prerenderable.
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
   // Pin the workspace root: the parent directory has an unrelated
   // package-lock.json that Turbopack would otherwise try to infer from.
   turbopack: {

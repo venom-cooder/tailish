@@ -9,6 +9,8 @@ import { siteConfig } from "@/lib/config";
  * The portal (/app/*), sign-in and shared passports (/p/*) are deliberately
  * excluded — they're personal and marked noindex in their own metadata.
  */
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
 

@@ -242,7 +242,7 @@ function BookingCard({
 
       <div className="mt-5 flex flex-wrap gap-2 border-t border-hairline pt-5">
         <Button asChild size="sm" variant="outline">
-          <Link href={`/app/pets/${booking.petId}`}>View passport</Link>
+          <Link href={`/app/pet/?id=${booking.petId}`}>View passport</Link>
         </Button>
 
         <WhatsAppButton

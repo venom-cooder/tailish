@@ -82,7 +82,7 @@ export function HealthPassportCard({
   pet,
   vaccinations,
   lastVisitDate,
-  href = "/app/pets/pet_01",
+  href = "/app/pet/?id=pet_01",
   className,
 }: PassportSummary & { className?: string }) {
   const upcoming = vaccinations

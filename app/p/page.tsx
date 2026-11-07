@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -21,6 +21,7 @@ import { SourceBadge } from "@/components/shared/source-badge";
 import { ErrorState, LoadingState } from "@/components/shared/states";
 import { api } from "@/lib/api";
 import { useAsync } from "@/lib/hooks/use-async";
+import { useRouteParam } from "@/lib/hooks/use-route-param";
 import { TODAY_ISO } from "@/lib/mock/clock";
 import type { SharedPassport } from "@/lib/types";
 import { cn, daysBetween, formatDate, formatDateLong } from "@/lib/utils";
@@ -32,11 +33,7 @@ import { cn, daysBetween, formatDate, formatDateLong } from "@/lib/utils";
  * and no way to reach anything the owner didn't share. Sections the owner
  * excluded arrive empty from the API and simply aren't rendered.
  */
-export default function SharedPassportPage({
-  params,
-}: {
-  params: Promise<{ shareToken: string }>;
-}) {
+export default function SharedPassportPage() {
   return (
     <div className="min-h-dvh bg-cream/60">
       <header className="border-b border-hairline bg-white">
@@ -54,7 +51,7 @@ export default function SharedPassportPage({
           {/* The token is runtime-only URL data, so the record streams in
               while the page chrome prerenders. */}
           <Suspense fallback={<LoadingState label="Loading shared passport" rows={4} />}>
-            <SharedPassportBody params={params} />
+            <SharedPassportBody />
           </Suspense>
         </Container>
       </main>
@@ -74,8 +71,8 @@ export default function SharedPassportPage({
   );
 }
 
-function SharedPassportBody({ params }: { params: Promise<{ shareToken: string }> }) {
-  const { shareToken } = use(params);
+function SharedPassportBody() {
+  const shareToken = useRouteParam("t");
   const shared = useAsync<SharedPassport>(
     () => api.passport.getSharedPassport(shareToken),
     [shareToken],

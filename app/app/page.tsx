@@ -28,7 +28,7 @@ import { formatDate, formatDateLong, formatINR } from "@/lib/utils";
 const quickActions = [
   { icon: CalendarCheck, label: "Book a visit", href: "/vet-care/book-visit" },
   { icon: Sparkles, label: "Ask Tailish", href: "/app/ask" },
-  { icon: Upload, label: "Upload a report", href: "/app/pets/pet_01" },
+  { icon: Upload, label: "Upload a report", href: "/app/pet/?id=pet_01" },
   { icon: MapPin, label: "Vets nearby", href: "/nearby" },
 ];
 
@@ -176,7 +176,7 @@ export default function DashboardPage() {
                     <Link href="/app/care">Manage booking</Link>
                   </Button>
                   <Button asChild size="sm" variant="ghost">
-                    <Link href={`/app/pets/${upcomingBooking.petId}`}>View passport</Link>
+                    <Link href={`/app/pet/?id=${upcomingBooking.petId}`}>View passport</Link>
                   </Button>
                 </div>
               </article>
@@ -202,7 +202,7 @@ export default function DashboardPage() {
               </h2>
 
               <Link
-                href={`/app/orders/${activeOrder.reference}`}
+                href={`/app/order/?id=${activeOrder.reference}`}
                 className="flex items-center gap-4 rounded-3xl border border-hairline bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift"
               >
                 <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600">
@@ -246,13 +246,13 @@ export default function DashboardPage() {
                   pet={activePet}
                   vaccinations={vaccinations.data ?? []}
                   lastVisitDate={lastVisit?.scheduledFor}
-                  href={`/app/pets/${activePet.id}`}
+                  href={`/app/pet/?id=${activePet.id}`}
                 />
 
                 {(pets.data ?? []).slice(1).map((pet) => (
                   <Link
                     key={pet.id}
-                    href={`/app/pets/${pet.id}`}
+                    href={`/app/pet/?id=${pet.id}`}
                     className="flex items-center gap-4 rounded-2xl border border-hairline bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift"
                   >
                     <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-700">

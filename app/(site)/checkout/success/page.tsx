@@ -156,7 +156,7 @@ function SuccessContent() {
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href={`/app/orders/${placed.reference}`}>
+              <Link href={`/app/order/?id=${placed.reference}`}>
                 <Package className="size-5" aria-hidden="true" />
                 Track this order
               </Link>

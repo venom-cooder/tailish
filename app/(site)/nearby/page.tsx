@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import Link from "next/link";
 import { MapPin, Phone, ShieldPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/section";
 import { PageHero } from "@/components/shared/page-hero";
-import { LoadingState } from "@/components/shared/states";
-import { NearbyFinder } from "@/components/nearby/nearby-finder";
+import { NearbyRoute } from "@/components/nearby/nearby-route";
 import { FinalCta } from "@/components/home/sections";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
-import { api } from "@/lib/api";
 import { siteConfig } from "@/lib/config";
 import { whatsappMessages } from "@/lib/whatsapp";
-import type { NearbyType } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Vets, emergency hospitals and pet-friendly places near you",
@@ -21,34 +17,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/nearby" },
 };
 
-const VALID_TYPES: readonly string[] = [
-  "vet",
-  "emergency",
-  "pharmacy",
-  "groomer",
-  "store",
-  "cafe",
-  "boarding",
-];
-
-/**
- * Reading searchParams makes this subtree request-time, so it sits behind a
- * Suspense boundary and the page still ships a static shell.
- */
-async function Finder({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
-  const { type } = await searchParams;
-  const places = await api.services.nearby();
-  const initialType =
-    type && VALID_TYPES.includes(type) ? (type as NearbyType) : ("all" as const);
-
-  return <NearbyFinder places={places} initialType={initialType} />;
-}
-
-export default function NearbyPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ type?: string }>;
-}) {
+export default function NearbyPage() {
   return (
     <>
       <PageHero
@@ -88,9 +57,7 @@ export default function NearbyPage({
             </Button>
           </div>
 
-          <Suspense fallback={<LoadingState label="Finding places near you" rows={4} />}>
-            <Finder searchParams={searchParams} />
-          </Suspense>
+          <NearbyRoute />
         </Container>
       </Section>
 

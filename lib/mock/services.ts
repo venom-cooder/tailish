@@ -313,7 +313,7 @@ export const mockReminders: Reminder[] = [
     details: "One tablet daily with food, then stop.",
     dueOn: addDays(6),
     status: "pending",
-    actionHref: "/app/pets/pet_01",
+    actionHref: "/app/pet/?id=pet_01",
   },
   {
     id: "rem_04",

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { use } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import { Clock, Link2, Loader2, Share2, ShieldCheck, Trash2 } from "lucide-react";
@@ -15,6 +15,7 @@ import { ErrorState, LoadingState } from "@/components/shared/states";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { api } from "@/lib/api";
 import { useAsync, useMutation } from "@/lib/hooks/use-async";
+import { useRouteParam } from "@/lib/hooks/use-route-param";
 import type { Pet, ShareLink } from "@/lib/types";
 import { formatDateLong } from "@/lib/utils";
 
@@ -26,8 +27,16 @@ const SCOPE_FIELDS = [
   { key: "documents", label: "Documents", detail: "Prescriptions, lab reports and imaging." },
 ] as const;
 
-export default function SharePassportPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function SharePassportPage() {
+  return (
+    <Suspense fallback={<LoadingState label="Loading sharing options" rows={4} />}>
+      <SharePassportBody />
+    </Suspense>
+  );
+}
+
+function SharePassportBody() {
+  const id = useRouteParam("id");
 
   const pet = useAsync<Pet>(() => api.pets.get(id), [id]);
 
@@ -62,7 +71,7 @@ export default function SharePassportPage({ params }: { params: Promise<{ id: st
       <PortalHeader
         title={`Share ${pet.data?.name}'s passport`}
         description="Generate a read-only link and QR code. You choose what's visible, and it expires on its own."
-        backHref={`/app/pets/${id}`}
+        backHref={`/app/pet/?id=${id}`}
       />
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
@@ -177,7 +186,7 @@ export default function SharePassportPage({ params }: { params: Promise<{ id: st
 
               <div className="mt-7 space-y-2.5">
                 <Button asChild variant="outline" className="w-full">
-                  <Link href={`/p/${link.shareToken}`}>Preview what they&apos;ll see</Link>
+                  <Link href={`/p/?t=${link.shareToken}`}>Preview what they&apos;ll see</Link>
                 </Button>
 
                 <WhatsAppButton

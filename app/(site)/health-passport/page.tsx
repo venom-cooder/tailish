@@ -141,7 +141,7 @@ export default function HealthPassportPage() {
             pet={pet}
             vaccinations={vaccinations}
             lastVisitDate={addDays(-3)}
-            href="/app/pets/pet_01"
+            href="/app/pet/?id=pet_01"
           />
         }
       >
@@ -249,7 +249,7 @@ export default function HealthPassportPage() {
                 ))}
 
                 <Button asChild variant="outline" className="w-full">
-                  <Link href="/p/demo-passport">See a shared passport</Link>
+                  <Link href="/p/?t=demo-passport">See a shared passport</Link>
                 </Button>
               </div>
             </Reveal>

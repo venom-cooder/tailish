@@ -107,7 +107,7 @@ function OrderCard({ order }: { order: Order }) {
 
       <div className="mt-5 flex flex-wrap gap-2 border-t border-hairline pt-5">
         <Button asChild size="sm" variant="outline">
-          <Link href={`/app/orders/${order.reference}`}>
+          <Link href={`/app/order/?id=${order.reference}`}>
             Order details
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>

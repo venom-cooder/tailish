@@ -22,7 +22,7 @@ const SPECIES: { value: Species; label: string; emoji: string }[] = [
   { value: "other", label: "Other", emoji: "🐾" },
 ];
 
-/** Shared by /app/pets/new and /app/pets/[id]/edit. */
+/** Shared by /app/pets/new and /app/pet/edit. */
 export function PetForm({ pet }: { pet?: Pet }) {
   const router = useRouter();
   const editing = Boolean(pet);
@@ -56,7 +56,7 @@ export function PetForm({ pet }: { pet?: Pet }) {
     };
 
     const saved = pet ? await api.pets.update(pet.id, payload) : await api.pets.create(payload);
-    router.push(`/app/pets/${saved.id}`);
+    router.push(`/app/pet/?id=${saved.id}`);
     return saved;
   });
 

@@ -330,7 +330,7 @@ export function PassportPreview() {
                 <Link href="/health-passport">Explore the Health Passport</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/app/pets/pet_01">See a live example</Link>
+                <Link href="/app/pet/?id=pet_01">See a live example</Link>
               </Button>
             </div>
           </Reveal>
@@ -340,7 +340,7 @@ export function PassportPreview() {
               pet={pet}
               vaccinations={vaccinations}
               lastVisitDate={addDays(-3)}
-              href="/app/pets/pet_01"
+              href="/app/pet/?id=pet_01"
             />
           </Reveal>
         </div>

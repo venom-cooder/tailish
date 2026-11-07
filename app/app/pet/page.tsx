@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { use } from "react";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -26,6 +26,7 @@ import { CopyButton } from "@/components/shared/copy-button";
 import { EmptyState, ErrorState, LoadingState } from "@/components/shared/states";
 import { api } from "@/lib/api";
 import { useAsync, useMutation } from "@/lib/hooks/use-async";
+import { useRouteParam } from "@/lib/hooks/use-route-param";
 import { TODAY_ISO } from "@/lib/mock/clock";
 import type {
   Condition,
@@ -48,8 +49,16 @@ const CATEGORY_ICON: Record<TimelineEvent["category"], React.ComponentType<{ cla
   note: FileText,
 };
 
-export default function PetPassportPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function PetPassportPage() {
+  return (
+    <Suspense fallback={<LoadingState label="Loading Health Passport" rows={4} />}>
+      <PetPassportBody />
+    </Suspense>
+  );
+}
+
+function PetPassportBody() {
+  const id = useRouteParam("id");
 
   const pet = useAsync<Pet>(() => api.pets.get(id), [id]);
   const vaccinations = useAsync<Vaccination[]>(() => api.passport.listVaccinations(id), [id]);
@@ -78,13 +87,13 @@ export default function PetPassportPage({ params }: { params: Promise<{ id: stri
     <>
       <PortalHeader title={`${animal.name}'s Health Passport`} backHref="/app/pets">
         <Button asChild variant="outline" size="sm">
-          <Link href={`/app/pets/${id}/edit`}>
+          <Link href={`/app/pet/edit/?id=${id}`}>
             <Pencil className="size-4" aria-hidden="true" />
             Edit
           </Link>
         </Button>
         <Button asChild size="sm">
-          <Link href={`/app/pets/${id}/share`}>
+          <Link href={`/app/pet/share/?id=${id}`}>
             <Share2 className="size-4" aria-hidden="true" />
             Share
           </Link>

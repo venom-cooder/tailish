@@ -218,7 +218,7 @@ Give the Apoquel with a meal rather than on an empty stomach. If you miss a dose
 
 Don't stop early even if the skin looks settled. Stopping an anti-itch course at the first improvement is the most common reason a flare rebounds.`,
       quickReplies: ["Set a daily reminder", "What if I miss a dose?", "Refill the omega-3 oil"],
-      citations: [{ label: "Open Health Passport", href: "/app/pets/pet_01" }],
+      citations: [{ label: "Open Health Passport", href: "/app/pet/?id=pet_01" }],
     }),
   },
   {
@@ -261,7 +261,7 @@ Which of those fits?`,
 
 You can share a read-only copy with a boarding facility, a new vet or a family member — it generates a QR code and an expiring link, and you choose which sections are visible. Nothing is shared until you create the link, and you can revoke it at any time.`,
       quickReplies: ["Share the passport", "Upload a report", "Show the timeline"],
-      citations: [{ label: "Open Health Passport", href: "/app/pets/pet_01" }],
+      citations: [{ label: "Open Health Passport", href: "/app/pet/?id=pet_01" }],
     }),
   },
 ];
