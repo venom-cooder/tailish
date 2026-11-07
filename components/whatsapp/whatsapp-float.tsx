@@ -11,6 +11,9 @@ import { WhatsAppGlyph } from "./whatsapp-button";
  *
  * Hidden below `lg`, where the mobile tab bar carries its own Ask action — two
  * fixed WhatsApp buttons would otherwise stack in the same corner.
+ *
+ * Sits bottom-left, not bottom-right: the AxisIQ chat widget pins itself to
+ * the right corner and cannot be moved, so the two would overlap there.
  */
 export function WhatsAppFloat() {
   const pathname = usePathname() ?? "/";
@@ -26,7 +29,7 @@ export function WhatsAppFloat() {
     <div
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
-      className="fixed bottom-6 right-6 z-40 hidden flex-col items-end gap-3 lg:flex print:hidden"
+      className="fixed bottom-6 left-6 z-40 hidden flex-col items-start gap-3 lg:flex print:hidden"
     >
       {expanded ? (
         <div className="animate-in fade-in-0 slide-in-from-bottom-2 max-w-[17rem] rounded-2xl border border-hairline bg-white p-4 shadow-lift duration-200">

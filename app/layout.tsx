@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Playfair_Display, Sora } from "next/font/google";
 import { CartProvider } from "@/components/providers/cart-provider";
 import { SessionProvider } from "@/components/providers/session-provider";
@@ -107,6 +108,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <WhatsAppFloat />
           </CartProvider>
         </SessionProvider>
+
+        {/* Tailish agent chat bubble, served by AxisIQ. Loaded after the page
+            is interactive so it never competes with first paint. The agent
+            answers website visitors anonymously; anything personal is handled
+            on WhatsApp. */}
+        <Script
+          src="https://axisiq.co/agents/widget.js"
+          data-org="01a153c7-bf8a-7ad4-9015-2b088ca07c98"
+          data-agent="tailish"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
