@@ -166,11 +166,13 @@ fi
 # either stops the run with the previous release still live and untouched.
 
 step "Type checking"
-npm run --silent typecheck || fail "Type check failed. Nothing was published."
+( cd "$SOURCE_DIR" && npm run --silent typecheck ) \
+  || fail "Type check failed. Nothing was published."
 ok "clean"
 
 step "Building the static export"
-npm run --silent build || fail "Build failed. Nothing was published."
+( cd "$SOURCE_DIR" && npm run --silent build ) \
+  || fail "Build failed. Nothing was published."
 
 # ----------------------------------------------- 4. sanity-check the artefacts
 #
@@ -274,15 +276,23 @@ fi
 
 step "Pushing source to GitHub"
 
-if [[ "$source_dirty" == true ]]; then
-  warn "Source tree is dirty — there is nothing new to push.
-   The site is live, but GitHub will not reflect what shipped until the
-   working tree is committed."
-  exit 0
-fi
-
-if git -C "$SOURCE_DIR" push -q origin "$source_branch" 2>/dev/null; then
-  ok "GitHub updated to $source_sha"
+# Deliberately not skipped when the tree is dirty. Uncommitted edits and
+# committed-but-unpushed commits are independent: a release made from a dirty
+# tree can still be sitting on top of commits GitHub has never seen, and
+# skipping the push would strand them while reporting success. Push what is
+# committed, then say plainly what is still missing.
+#
+# stderr is left attached so a rejected push shows its reason — "failed, retry
+# later" is not actionable when the cause was a non-fast-forward or a dead
+# credential.
+if git -C "$SOURCE_DIR" push origin "$source_branch"; then
+  if [[ "$source_dirty" == true ]]; then
+    ok "GitHub updated to $source_sha"
+    warn "The live site also contains the uncommitted changes listed above,
+   which exist nowhere but this machine. Commit and push to close the gap."
+  else
+    ok "GitHub updated to $source_sha"
+  fi
 else
   warn "GitHub push failed.
    THE SITE IS LIVE — this does not affect it. Only the public source repo
