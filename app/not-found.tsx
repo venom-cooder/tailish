@@ -1,14 +1,16 @@
 import Link from "next/link";
-import { ArrowLeft, BookOpen, MapPin, Search, ShoppingBag } from "lucide-react";
+import { ArrowLeft, BookOpen, MessageCircle, Search, Sparkles } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/shared/section";
 
+// A 404 page offering more 404s is where dead links are least forgivable —
+// "Shop" and "Vets nearby" both pointed at parked routes.
 const suggestions = [
-  { icon: ShoppingBag, label: "Shop", href: "/shop" },
   { icon: BookOpen, label: "Care guides", href: "/guides" },
-  { icon: MapPin, label: "Vets nearby", href: "/nearby" },
   { icon: Search, label: "Health Passport", href: "/health-passport" },
+  { icon: Sparkles, label: "How Tailish works", href: "/how-it-works" },
+  { icon: MessageCircle, label: "Contact us", href: "/contact" },
 ];
 
 export default function NotFound() {

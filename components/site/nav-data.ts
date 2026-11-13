@@ -35,7 +35,7 @@ export const resourcesNav: NavItem[] = [
   {
     label: "Care guides",
     href: "/guides",
-    description: "Vet-reviewed answers to the questions parents ask most.",
+    description: "Practical answers to the questions pet parents ask most.",
     icon: BookOpen,
   },
   {

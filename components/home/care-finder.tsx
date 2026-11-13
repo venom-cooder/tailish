@@ -5,18 +5,22 @@ import Link from "next/link";
 import { ArrowRight, FlaskConical, Home, Search, Syringe, Video } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PawGlyph } from "@/components/brand/logo";
-import { getWhatsAppLink } from "@/lib/whatsapp";
+import { getWhatsAppLink, whatsappMessages } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 type Intent = "help" | "explore";
 
+// Each tile opens WhatsApp with its own request already written. They used to
+// open /vet-care pages whose booking forms submitted into a mock, so the
+// request reached nobody; the services themselves are real, the route to them
+// is now the one that answers.
 const SERVICES: { label: string; href: string; icon: LucideIcon }[] = [
-  { label: "Talk to Vet", href: "/vet-care/video-consult", icon: Video },
+  { label: "Talk to Vet", href: getWhatsAppLink({ text: whatsappMessages.videoConsult }), icon: Video },
   // "Home Visit" rather than "Vet at Home": it matches the service's own name
   // elsewhere on the site and fits a phone-width tile on one line.
-  { label: "Home Visit", href: "/vet-care/home-visit", icon: Home },
-  { label: "Vaccination", href: "/vet-care/vaccination", icon: Syringe },
-  { label: "Diagnostics", href: "/vet-care/diagnostics", icon: FlaskConical },
+  { label: "Home Visit", href: getWhatsAppLink({ text: whatsappMessages.homeVisit }), icon: Home },
+  { label: "Vaccination", href: getWhatsAppLink({ text: whatsappMessages.vaccination }), icon: Syringe },
+  { label: "Diagnostics", href: getWhatsAppLink({ text: whatsappMessages.diagnostics }), icon: FlaskConical },
 ];
 
 const PLACEHOLDER: Record<Intent, string> = {

@@ -127,7 +127,8 @@ export function GuideCard({ guide, className }: { guide: Guide; className?: stri
         <p className="mt-2.5 flex-1 text-sm leading-relaxed text-muted">{guide.excerpt}</p>
 
         <div className="mt-5 flex items-center justify-between gap-3 border-t border-hairline pt-4 text-xs text-muted">
-          <span>{guide.author.name}</span>
+          {/* Was the invented vet's name. */}
+          <span>{guide.category}</span>
           <span className="flex items-center gap-1.5">
             <Clock className="size-3.5" aria-hidden="true" />
             {guide.readingMinutes} min · {formatDate(guide.publishedAt)}

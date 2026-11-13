@@ -633,12 +633,12 @@ export interface ReminderUpdate {
 
 /* ---------------------------------------------------------------- content */
 
-export interface GuideAuthor {
-  name: string;
-  credentials: string;
-  photoUrl?: string;
-}
-
+// No GuideAuthor. Every guide carried a byline naming one of three
+// veterinarians with postgraduate credentials, none of whom exist. These are
+// medical guides — vaccination schedules, toxic foods, when a symptom is
+// urgent — so a fabricated clinical byline is the detail most likely to make
+// a reader act on the advice. A byline returns when a registered vet has
+// actually reviewed the content and agreed to be named.
 export interface Guide {
   id: string;
   slug: string;
@@ -650,7 +650,6 @@ export interface Guide {
   readingMinutes: number;
   publishedAt: string;
   updatedAt?: string;
-  author: GuideAuthor;
   /** Markdown-ish body rendered by the guide page. */
   body: string;
   featured?: boolean;

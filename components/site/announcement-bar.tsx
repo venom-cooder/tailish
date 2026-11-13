@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { CircleHelp, MapPin, Truck } from "lucide-react";
+import { CircleHelp, MapPin } from "lucide-react";
 import { Container } from "@/components/shared/section";
 import { siteConfig } from "@/lib/config";
 
-const links = [
-  { label: "Track request", href: "/app/care", icon: Truck },
-  { label: "Help", href: "/contact", icon: CircleHelp },
-];
+// "Track request" sat here, on every page, pointing at the parked portal.
+const links = [{ label: "Help", href: "/contact", icon: CircleHelp }];
 
 /**
  * Thin utility strip above the header.

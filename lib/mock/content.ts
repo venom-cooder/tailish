@@ -1,24 +1,6 @@
 import type { Breed, Guide, Plan } from "@/lib/types";
 import { addDays } from "./clock";
 
-const vetAuthor = {
-  name: "Dr. Kavita Rao",
-  credentials: "BVSc & AH, MVSc (Medicine)",
-  photoUrl: "/images/avatars/vet-1.svg",
-};
-
-const nutritionAuthor = {
-  name: "Dr. Sneha Patil",
-  credentials: "BVSc & AH, PG Dip (Nutrition)",
-  photoUrl: "/images/avatars/vet-3.svg",
-};
-
-const felineAuthor = {
-  name: "Dr. Imran Qureshi",
-  credentials: "BVSc & AH",
-  photoUrl: "/images/avatars/vet-2.svg",
-};
-
 export const mockGuides: Guide[] = [
   {
     id: "gd_01",
@@ -32,7 +14,6 @@ export const mockGuides: Guide[] = [
     readingMinutes: 7,
     publishedAt: addDays(-45),
     updatedAt: addDays(-12),
-    author: vetAuthor,
     featured: true,
     relatedSlugs: ["deworming-schedule-dogs-cats", "tick-and-flea-prevention-india"],
     body: `Vaccination is the single highest-return thing you will do for your puppy, and the window for doing it well is narrow. Maternal antibodies protect a puppy for the first weeks of life, then fade — and the fade is unpredictable. That gap, somewhere between six and sixteen weeks, is when most preventable illness happens.
@@ -77,7 +58,6 @@ Vaccination certificates are needed for boarding, travel, housing societies, and
     coverImage: "/images/guides/ticks.svg",
     readingMinutes: 6,
     publishedAt: addDays(-28),
-    author: vetAuthor,
     featured: true,
     relatedSlugs: ["deworming-schedule-dogs-cats", "monsoon-skin-problems-dogs"],
     body: `Ticks are not a nuisance. They are a vector for babesiosis and ehrlichiosis, both of which land dogs in hospital every monsoon in this city, and both of which are far easier to prevent than to treat.
@@ -130,7 +110,6 @@ Lethargy, pale gums, fever, dark urine or a reluctance to stand after tick expos
     coverImage: "/images/guides/food-safety.svg",
     readingMinutes: 5,
     publishedAt: addDays(-60),
-    author: nutritionAuthor,
     relatedSlugs: ["how-much-should-my-dog-eat", "puppy-vaccination-schedule-india"],
     body: `Most of what gets shared about toxic foods is either exaggerated or missing the dose that actually matters. Here is the version worth keeping.
 
@@ -172,7 +151,6 @@ If you are unsure whether something is a problem, ask. A two-minute conversation
     coverImage: "/images/guides/nutrition.svg",
     readingMinutes: 6,
     publishedAt: addDays(-21),
-    author: nutritionAuthor,
     relatedSlugs: ["foods-toxic-to-dogs-and-cats", "senior-dog-care-checklist"],
     body: `Feeding guidelines on a pack are calculated for an average, intact, moderately active dog. Your dog is probably none of those things. A neutered, apartment-living Labrador may need twenty to thirty percent less than the bag suggests.
 
@@ -215,7 +193,6 @@ If you have reduced intake honestly for two months and nothing has changed, stop
     coverImage: "/images/guides/skin.svg",
     readingMinutes: 5,
     publishedAt: addDays(-15),
-    author: vetAuthor,
     relatedSlugs: ["tick-and-flea-prevention-india", "when-to-see-a-vet-urgently"],
     body: `Humidity does two things to dog skin: it keeps the coat damp for longer, and it lets yeast and bacteria that normally live there harmlessly multiply past the point of balance. Dogs with heavy coats, skin folds, or floppy ears have the hardest time.
 
@@ -258,7 +235,6 @@ Spreading redness, pus, a bad smell, bleeding, pain on touch, or a dog who is of
     coverImage: "/images/guides/kitten.svg",
     readingMinutes: 6,
     publishedAt: addDays(-34),
-    author: felineAuthor,
     relatedSlugs: ["cat-litter-box-problems", "puppy-vaccination-schedule-india"],
     body: `Kittens do not benefit from the run of a house on day one. A large, unfamiliar space with no identifiable safe corner produces a kitten who hides under furniture for a fortnight.
 
@@ -305,7 +281,6 @@ Lilies are lethal to cats. So are several houseplants. Secure window grilles and
     coverImage: "/images/guides/emergency.svg",
     readingMinutes: 4,
     publishedAt: addDays(-8),
-    author: vetAuthor,
     featured: true,
     relatedSlugs: ["foods-toxic-to-dogs-and-cats", "monsoon-skin-problems-dogs"],
     body: `Most worries can wait for a morning appointment. These cannot. If you see any of the following, go to an emergency hospital now — do not wait to see whether it settles.
@@ -349,7 +324,6 @@ Tailish never diagnoses an emergency over chat. If what you describe sounds urge
     coverImage: "/images/guides/senior.svg",
     readingMinutes: 6,
     publishedAt: addDays(-52),
-    author: vetAuthor,
     relatedSlugs: ["how-much-should-my-dog-eat", "when-to-see-a-vet-urgently"],
     body: `"Senior" arrives earlier in large breeds — around six for a Great Dane, closer to nine for a small terrier. The transition is gradual, which is exactly why it gets missed. Owners often describe a dog who is "just slowing down" when what's happening is treatable pain.
 
@@ -395,7 +369,6 @@ Talk to your vet about what quality of life looks like for your dog, before you'
     coverImage: "/images/guides/litter.svg",
     readingMinutes: 5,
     publishedAt: addDays(-40),
-    author: felineAuthor,
     relatedSlugs: ["bringing-home-a-kitten", "when-to-see-a-vet-urgently"],
     body: `A cat who was reliable and now isn't is telling you something. The order in which you investigate matters, because the first category is the urgent one.
 
@@ -441,7 +414,6 @@ Use an enzymatic cleaner. Ammonia-based cleaners smell like urine to a cat and a
     coverImage: "/images/guides/deworming.svg",
     readingMinutes: 4,
     publishedAt: addDays(-70),
-    author: nutritionAuthor,
     relatedSlugs: ["puppy-vaccination-schedule-india", "tick-and-flea-prevention-india"],
     body: `Intestinal worms are close to universal in young animals in India, and several of them are transmissible to people — particularly to children. Deworming is routine, cheap and genuinely important.
 

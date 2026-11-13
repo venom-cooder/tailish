@@ -15,12 +15,14 @@ const trustMarks = [
   { icon: Heart, label: "All Records", detail: "in one place" },
 ];
 
+// Every tile opens WhatsApp. Dogs and Cats pointed into the parked shop, the
+// rest at the parked vet-care index.
 const petTypes = [
-  { label: "Dogs", src: "/images/pet-types/dog.svg", href: "/shop/dog-food" },
-  { label: "Cats", src: "/images/pet-types/cat.svg", href: "/shop/cat-food" },
-  { label: "Rabbits", src: "/images/pet-types/rabbit.svg", href: "/vet-care" },
-  { label: "Birds", src: "/images/pet-types/bird.svg", href: "/vet-care" },
-  { label: "Small pets", src: "/images/pet-types/small.svg", href: "/vet-care" },
+  { label: "Dogs", src: "/images/pet-types/dog.svg", href: getWhatsAppLink({ text: whatsappMessages.home }) },
+  { label: "Cats", src: "/images/pet-types/cat.svg", href: getWhatsAppLink({ text: whatsappMessages.home }) },
+  { label: "Rabbits", src: "/images/pet-types/rabbit.svg", href: getWhatsAppLink({ text: whatsappMessages.home }) },
+  { label: "Birds", src: "/images/pet-types/bird.svg", href: getWhatsAppLink({ text: whatsappMessages.home }) },
+  { label: "Small pets", src: "/images/pet-types/small.svg", href: getWhatsAppLink({ text: whatsappMessages.home }) },
 ];
 
 export function Hero() {

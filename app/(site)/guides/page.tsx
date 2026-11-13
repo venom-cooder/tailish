@@ -8,9 +8,9 @@ import { FinalCta } from "@/components/home/sections";
 import { api, guideCategories } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Pet care guides — written and reviewed by veterinarians",
+  title: "Pet care guides for Indian pet parents",
   description:
-    "Practical guides on vaccination schedules, parasite prevention, nutrition, skin problems and emergencies — written for Indian conditions and reviewed by registered vets.",
+    "Practical guides on vaccination schedules, parasite prevention, nutrition, skin problems and emergencies, written for Indian conditions. General information, not veterinary advice.",
   alternates: { canonical: "/guides" },
 };
 
@@ -25,7 +25,7 @@ export default async function GuidesPage() {
         eyebrowIcon={BookOpen}
         crumbs={[{ label: "Guides" }]}
         title="Pet care, explained properly."
-        description="Written for Indian conditions — monsoon ticks, summer heat, the vaccines your municipality actually requires — and reviewed by registered veterinarians before publication."
+        description="Written for Indian conditions — monsoon ticks, summer heat, the vaccines your municipality actually requires. General information from the Tailish team, not a substitute for seeing a vet."
       />
 
       {featured.length > 0 ? (

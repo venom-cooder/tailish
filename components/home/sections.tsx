@@ -33,7 +33,7 @@ import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { WhatsAppQR } from "@/components/whatsapp/whatsapp-qr";
 import { samplePet, sampleVaccinations } from "@/lib/sample-passport";
 import { siteConfig } from "@/lib/config";
-import { whatsappMessages } from "@/lib/whatsapp";
+import { getWhatsAppLink, whatsappMessages } from "@/lib/whatsapp";
 import { cn, formatINR } from "@/lib/utils";
 
 /* --------------------------------------------------------- service strip */
@@ -43,19 +43,19 @@ const entryPoints = [
     icon: MessageCircleQuestion,
     title: "Ask Tailish",
     description: "Tell us what changed. The care team organises the right next step.",
-    href: "/app/ask",
+    href: getWhatsAppLink({ text: whatsappMessages.askTailish }),
   },
   {
     icon: Home,
     title: "Home Care",
     description: `Vaccination, diagnostics and vet home visits in ${siteConfig.city}.`,
-    href: "/vet-care/home-visit",
+    href: getWhatsAppLink({ text: whatsappMessages.homeVisit }),
   },
   {
     icon: Stethoscope,
     title: "Online Vet",
     description: "Consult registered veterinarians from your home.",
-    href: "/vet-care/video-consult",
+    href: getWhatsAppLink({ text: whatsappMessages.videoConsult }),
   },
   {
     icon: FileText,
@@ -124,19 +124,19 @@ const features = [
     icon: Stethoscope,
     title: "Vet Review",
     description: "Share concerns and medical history. Get an expert review from trusted vets.",
-    href: "/vet-care/video-consult",
+    href: getWhatsAppLink({ text: whatsappMessages.videoConsult }),
   },
   {
     icon: Home,
     title: "Home Visits",
     description: "Vets come to you for stress-free care in your pet's own surroundings.",
-    href: "/vet-care/home-visit",
+    href: getWhatsAppLink({ text: whatsappMessages.homeVisit }),
   },
   {
     icon: Syringe,
     title: "Vaccination",
     description: "Timely vaccines with batch records, reminders and easy scheduling.",
-    href: "/vet-care/vaccination",
+    href: getWhatsAppLink({ text: whatsappMessages.vaccination }),
   },
   {
     icon: FileText,
@@ -148,7 +148,7 @@ const features = [
     icon: MessageCircleQuestion,
     title: "Daily Support",
     description: "Talk to vets for doubts, advice and ongoing care support.",
-    href: "/app/ask",
+    href: getWhatsAppLink({ text: whatsappMessages.askTailish }),
   },
 ];
 

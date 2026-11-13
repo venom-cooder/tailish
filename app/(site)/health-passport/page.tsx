@@ -71,7 +71,7 @@ const provenanceExamples: { source: RecordSource; label: string; meaning: string
   {
     source: "vet_verified",
     label: "Rabies booster, batch A24871K",
-    meaning: "Recorded by Dr. Kavita Rao during a Tailish home visit.",
+    meaning: "Recorded by the attending vet during a Tailish home visit.",
   },
   {
     source: "document_verified",

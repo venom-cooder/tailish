@@ -49,7 +49,6 @@ export async function generateMetadata({
       description: guide.excerpt,
       publishedTime: guide.publishedAt,
       modifiedTime: guide.updatedAt,
-      authors: [guide.author.name],
       tags: guide.tags,
     },
   };
@@ -106,11 +105,10 @@ async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
     description: guide.excerpt,
     datePublished: guide.publishedAt,
     dateModified: guide.updatedAt ?? guide.publishedAt,
-    author: {
-      "@type": "Person",
-      name: guide.author.name,
-      jobTitle: guide.author.credentials,
-    },
+    // Attributed to the organisation, not a Person. The Person entry named an
+    // invented vet and gave their credentials as jobTitle, which is exactly
+    // the signal a search engine reads as medical authorship.
+    author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     mainEntityOfPage: `${siteConfig.url}/guides/${guide.slug}`,
     keywords: guide.tags.join(", "),
@@ -157,20 +155,9 @@ async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
             <p className="mt-5 text-lg leading-relaxed text-muted">{guide.excerpt}</p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-hairline pt-6">
-              <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-full bg-brand-100 text-sm font-bold text-brand-800">
-                  {guide.author.name
-                    .replace(/^Dr\.\s*/, "")
-                    .split(" ")
-                    .slice(0, 2)
-                    .map((part) => part[0])
-                    .join("")}
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold text-ink">{guide.author.name}</span>
-                  <span className="block text-xs text-muted">{guide.author.credentials}</span>
-                </span>
-              </div>
+              {/* The vet byline and avatar that sat here named a person who
+                  does not exist, with credentials to match. */}
+              <span className="text-sm font-semibold text-ink">Tailish</span>
 
               <span className="flex items-center gap-1.5 text-xs text-muted">
                 <Clock className="size-3.5" aria-hidden="true" />
@@ -209,13 +196,14 @@ async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
           {isEmergencyGuide ? (
             <div className="mb-9 flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50/70 p-5">
               <AlertTriangle className="mt-0.5 size-5 shrink-0 text-red-600" aria-hidden="true" />
+              {/* "Find one open near you" linked to /nearby, a directory of
+                  invented clinics. Someone reading this guide is mid-emergency;
+                  a dead link, or a made-up hospital, is the worst outcome on
+                  the site. No link until the listings are real and verified. */}
               <p className="text-sm leading-relaxed text-red-900">
                 If your pet is showing any of the signs below right now, stop reading and go to a
-                veterinary hospital.{" "}
-                <Link href="/nearby?type=emergency" className="font-semibold underline underline-offset-4">
-                  Find one open near you
-                </Link>
-                .
+                veterinary hospital. Call your own vet, or search for a 24-hour emergency animal
+                hospital near you.
               </p>
             </div>
           ) : null}
@@ -233,10 +221,14 @@ async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
           <aside className="mt-10 rounded-3xl border border-hairline bg-brand-50/50 p-7">
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-0.5 size-5 shrink-0 text-brand-600" aria-hidden="true" />
+              {/* Said "reviewed by a registered veterinarian". No vet has
+                  reviewed these guides. Saying so plainly is the point of the
+                  notice — a false reassurance here is worse than none. */}
               <p className="text-sm leading-relaxed text-muted">
-                This guide is general information reviewed by a registered veterinarian. It
-                isn&apos;t a diagnosis, and it can&apos;t account for your pet&apos;s own history.
-                If something doesn&apos;t look right, have a vet look at it.
+                This guide is general information, written by the Tailish team and{" "}
+                <strong className="font-semibold text-ink">not reviewed by a veterinarian</strong>.
+                It isn&apos;t a diagnosis, and it can&apos;t account for your pet&apos;s own
+                history. If something doesn&apos;t look right, have a vet look at it.
               </p>
             </div>
 
