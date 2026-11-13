@@ -29,14 +29,9 @@ import {
 import { Container, Eyebrow, Section, SectionHeading } from "@/components/shared/section";
 import { Reveal } from "@/components/motion/reveal";
 import { HealthPassportCard } from "@/components/shared/health-passport-card";
-import { ProductCard } from "@/components/shop/product-card";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { WhatsAppQR } from "@/components/whatsapp/whatsapp-qr";
-import { mockPets, mockVaccinations } from "@/lib/mock/pets";
-import { mockProducts } from "@/lib/mock/catalog";
-import { mockNearby } from "@/lib/mock/services";
-import { mockPlans } from "@/lib/mock/content";
-import { addDays } from "@/lib/mock/clock";
+import { samplePet, sampleVaccinations } from "@/lib/sample-passport";
 import { siteConfig } from "@/lib/config";
 import { whatsappMessages } from "@/lib/whatsapp";
 import { cn, formatINR } from "@/lib/utils";
@@ -276,9 +271,6 @@ export function HowItWorks({ tone = "tint" }: { tone?: "tint" | "white" }) {
 /* ---------------------------------------------------- health passport */
 
 export function PassportPreview() {
-  const pet = mockPets[0];
-  const vaccinations = mockVaccinations.filter((v) => v.petId === pet.id);
-
   const points = [
     {
       icon: BadgeCheck,
@@ -329,19 +321,24 @@ export function PassportPreview() {
               <Button asChild>
                 <Link href="/health-passport">Explore the Health Passport</Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link href="/app/pet/?id=pet_01">See a live example</Link>
-              </Button>
             </div>
           </Reveal>
 
           <Reveal delayMs={120}>
-            <HealthPassportCard
-              pet={pet}
-              vaccinations={vaccinations}
-              lastVisitDate={addDays(-3)}
-              href="/app/pet/?id=pet_01"
-            />
+            {/* Labelled, and deliberately not a link. It used to read "See a
+                live example" and open a real-looking record for a dog the
+                visitor did not own. */}
+            <figure>
+              <HealthPassportCard
+                pet={samplePet}
+                vaccinations={sampleVaccinations}
+                lastVisitDate="2026-02-14"
+                href=""
+              />
+              <figcaption className="mt-3 text-center text-xs text-muted">
+                Example passport — not a real pet&apos;s record.
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </Container>
@@ -392,300 +389,6 @@ export function WhatsAppSection() {
               <WhatsAppQR tone="dark" size={200} text={whatsappMessages.home} />
             </div>
           </Reveal>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* ----------------------------------------------------------- shop teaser */
-
-export function ShopPreview() {
-  const featured = mockProducts
-    .filter((product) => product.tags.includes("bestseller"))
-    .slice(0, 8);
-
-  return (
-    <Section tone="cream">
-      <Container>
-        <SectionHeading
-          eyebrow="The Tailish shop"
-          eyebrowIcon={ShoppingBag}
-          title="Vet-picked food, supplements and essentials."
-          description="Stocked around what our vets actually recommend — including chicken-free diets, monsoon parasite control and prescription food."
-        >
-          <Button asChild variant="outline">
-            <Link href="/shop">
-              Shop all
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-          </Button>
-        </SectionHeading>
-
-        {/* Horizontal scroller on small screens, grid from lg up. */}
-        <div className="scrollbar-thin -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0">
-          {featured.map((product, index) => (
-            <Reveal
-              key={product.id}
-              delayMs={index * 60}
-              className="w-[16rem] shrink-0 snap-start lg:w-auto"
-            >
-              <ProductCard product={product} className="h-full" />
-            </Reveal>
-          ))}
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* --------------------------------------------------------- nearby teaser */
-
-const nearbyTypes = [
-  { icon: Stethoscope, label: "Vets & clinics", href: "/nearby?type=vet" },
-  { icon: ShieldCheck, label: "24×7 emergency", href: "/nearby?type=emergency" },
-  { icon: Store, label: "Pet stores", href: "/nearby?type=store" },
-  { icon: Coffee, label: "Pet-friendly cafés", href: "/nearby?type=cafe" },
-];
-
-export function NearbyTeaser() {
-  const places = mockNearby.slice(0, 3);
-
-  return (
-    <Section>
-      <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <Eyebrow icon={MapPin}>Nearby</Eyebrow>
-            <h2 className="mt-3 text-3xl font-bold leading-[1.15] sm:text-4xl">
-              The vet you need, when you need them.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-              A verified map of clinics, 24-hour emergency hospitals, pharmacies, groomers and
-              pet-friendly cafés — with live phone numbers, so the 2 AM search is already done.
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {nearbyTypes.map((type) => (
-                <Link
-                  key={type.label}
-                  href={type.href}
-                  className="group flex items-center gap-3 rounded-2xl border border-hairline bg-white p-4 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift"
-                >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-700 group-hover:text-white">
-                    <type.icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-medium text-ink">{type.label}</span>
-                  <ArrowRight className="ml-auto size-4 text-brand-400 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </Link>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delayMs={120} className="space-y-3">
-            {places.map((place) => (
-              <div
-                key={place.id}
-                className="flex items-start gap-4 rounded-2xl border border-hairline bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift"
-              >
-                <span
-                  className={cn(
-                    "grid size-11 shrink-0 place-items-center rounded-xl",
-                    place.type === "emergency"
-                      ? "bg-accent-50 text-accent-600"
-                      : "bg-brand-50 text-brand-600",
-                  )}
-                >
-                  {place.type === "emergency" ? (
-                    <ShieldCheck className="size-5" aria-hidden="true" />
-                  ) : (
-                    <Stethoscope className="size-5" aria-hidden="true" />
-                  )}
-                </span>
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <p className="text-sm font-semibold text-ink">{place.name}</p>
-                    {place.open24h ? <Badge variant="accent">24×7</Badge> : null}
-                    {place.verified ? <Badge variant="verified">Verified</Badge> : null}
-                  </div>
-                  <p className="mt-1 text-xs text-muted">
-                    {place.area} · {place.distanceKm} km away · {place.hours}
-                  </p>
-                  <p className="mt-2 flex items-center gap-1.5 text-xs text-muted">
-                    <Star className="size-3.5 fill-gold-500 text-gold-500" aria-hidden="true" />
-                    <span className="font-medium tabular text-ink">{place.rating}</span>
-                    <span>({place.reviewCount} reviews)</span>
-                  </p>
-                </div>
-              </div>
-            ))}
-
-            <Button asChild variant="outline" className="w-full">
-              <Link href="/nearby">Open the nearby map</Link>
-            </Button>
-          </Reveal>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* --------------------------------------------- testimonials and stats */
-
-const testimonials = [
-  {
-    quote:
-      "The vet came home, treated Bruno so gently, and explained everything clearly. Tailish makes pet care so easy and trustworthy.",
-    name: "Neha P.",
-    role: "Bruno's mom · Vijay Nagar",
-  },
-  {
-    quote:
-      "Misty hates the carrier. A home visit meant no yowling, no stress, and a vet who actually had time to answer my questions.",
-    name: "Aditya R.",
-    role: "Misty's dad · Palasia",
-  },
-  {
-    quote:
-      "I shared the Health Passport QR with the boarding facility and they had everything they needed. No more hunting for paper cards.",
-    name: "Shruti M.",
-    role: "Coco's mom · Rau",
-  },
-];
-
-export function Testimonials() {
-  const stats = [
-    { icon: ShieldCheck, value: siteConfig.stats.families, label: "Happy Pet Families" },
-    { icon: Star, value: siteConfig.stats.rating, label: "Average Rating" },
-    { icon: Home, value: siteConfig.stats.cities, label: "Cities Served" },
-  ];
-
-  return (
-    <Section tone="tint">
-      <Container>
-        <SectionHeading
-          eyebrow="Pet parents on Tailish"
-          eyebrowIcon={Heart}
-          align="center"
-          title="Trusted in thousands of Indian homes."
-        />
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <Reveal key={testimonial.name} delayMs={index * 90}>
-              <figure className="flex h-full flex-col rounded-3xl border border-hairline bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
-                <Quote className="size-8 text-brand-200" aria-hidden="true" />
-                <blockquote className="mt-4 flex-1 text-[0.9375rem] leading-relaxed text-ink/85">
-                  {testimonial.quote}
-                </blockquote>
-                <figcaption className="mt-6 border-t border-hairline pt-5">
-                  <span className="block text-sm font-semibold text-ink">{testimonial.name}</span>
-                  <span className="block text-xs text-muted">{testimonial.role}</span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delayMs={160}>
-          <ul className="mt-10 grid divide-y divide-hairline overflow-hidden rounded-3xl border border-hairline bg-white sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {stats.map((stat) => (
-              <li key={stat.label} className="flex items-center justify-center gap-4 px-6 py-8">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600">
-                  <stat.icon className="size-6" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block font-display text-2xl font-bold tabular text-ink">
-                    {stat.value}
-                  </span>
-                  <span className="block text-sm text-muted">{stat.label}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </Container>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------ plans */
-
-export function PlansTeaser() {
-  return (
-    <Section>
-      <Container>
-        <SectionHeading
-          eyebrow="Membership"
-          eyebrowIcon={ShieldCheck}
-          align="center"
-          title="CarePass — care that stays ahead of problems."
-          description="Members get unlimited consults, member pricing on home visits, and a wellness panel every year. Most of what goes wrong with pets is cheaper to prevent than to treat."
-        />
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {mockPlans.map((plan, index) => (
-            <Reveal key={plan.id} delayMs={index * 90}>
-              <div
-                className={cn(
-                  "relative flex h-full flex-col rounded-3xl border bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift",
-                  plan.popular ? "border-brand-600 ring-2 ring-brand-600/15" : "border-hairline",
-                )}
-              >
-                {plan.popular ? (
-                  <Badge
-                    variant="accent"
-                    className="absolute -top-3 left-7 shadow-soft"
-                  >
-                    Most popular
-                  </Badge>
-                ) : null}
-
-                <h3 className="font-display text-xl font-bold text-ink">{plan.name}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{plan.tagline}</p>
-
-                <p className="mt-6">
-                  <span className="font-display text-3xl font-bold tabular text-ink">
-                    {formatINR(plan.pricePerYear)}
-                  </span>
-                  <span className="text-sm text-muted"> / year</span>
-                </p>
-                <p className="mt-1 text-xs text-muted">
-                  or {formatINR(plan.pricePerMonth)} a month
-                </p>
-
-                <ul className="mt-6 flex-1 space-y-2.5">
-                  {plan.features.slice(0, 5).map((feature) => (
-                    <li
-                      key={feature.label}
-                      className={cn(
-                        "flex items-start gap-2.5 text-sm",
-                        feature.included ? "text-ink/80" : "text-muted/60 line-through",
-                      )}
-                    >
-                      <BadgeCheck
-                        className={cn(
-                          "mt-0.5 size-4.5 shrink-0",
-                          feature.included ? "text-emerald-600" : "text-muted/40",
-                        )}
-                        aria-hidden="true"
-                      />
-                      {feature.label}
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  asChild
-                  variant={plan.popular ? "primary" : "outline"}
-                  className="mt-7 w-full"
-                >
-                  <Link href="/pricing">{plan.ctaLabel}</Link>
-                </Button>
-              </div>
-            </Reveal>
-          ))}
         </div>
       </Container>
     </Section>
@@ -780,9 +483,12 @@ export function FinalCta() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
-            <Button asChild size="lg">
-              <Link href="/vet-care/book-visit">Book a Vet Visit</Link>
-            </Button>
+            <WhatsAppButton
+              size="lg"
+              variant="onDark"
+              text={whatsappMessages.bookVisit}
+              label="Book a Vet Visit"
+            />
             <WhatsAppButton
               size="lg"
               variant="onDark"

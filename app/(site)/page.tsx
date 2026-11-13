@@ -5,12 +5,8 @@ import {
   Features,
   FinalCta,
   HowItWorks,
-  NearbyTeaser,
   PassportPreview,
-  PlansTeaser,
   ServiceStrip,
-  ShopPreview,
-  Testimonials,
   WhatsAppSection,
 } from "@/components/home/sections";
 import { siteConfig } from "@/lib/config";
@@ -29,7 +25,6 @@ const organisationJsonLd = {
   description: siteConfig.description,
   url: siteConfig.url,
   email: siteConfig.email,
-  telephone: siteConfig.phone,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vijay Nagar",
@@ -39,12 +34,9 @@ const organisationJsonLd = {
     addressCountry: "IN",
   },
   areaServed: { "@type": "City", name: "Indore" },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "5000",
-    bestRating: "5",
-  },
+  // No aggregateRating. It declared 4.8 from 5000 reviews, which search engines
+  // are entitled to render as stars next to the result — a rating no customer
+  // ever gave. It goes back when real reviews exist to aggregate.
   sameAs: Object.values(siteConfig.social),
 };
 
@@ -63,10 +55,10 @@ export default function HomePage() {
       <HowItWorks />
       <PassportPreview />
       <WhatsAppSection />
-      <ShopPreview />
-      <NearbyTeaser />
-      <Testimonials />
-      <PlansTeaser />
+      {/* ShopPreview, NearbyTeaser, Testimonials and PlansTeaser are gone:
+          they advertised a shop with no checkout, clinics nobody partnered
+          with, reviews nobody wrote, and plans with unconfirmed prices. Their
+          code is kept — see parked/ — for when those things are real. */}
       <Faq />
       <FinalCta />
     </>

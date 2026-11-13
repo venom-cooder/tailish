@@ -241,9 +241,10 @@ async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
             </div>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
-                <Link href="/vet-care/book-visit">Book a Vet Visit</Link>
-              </Button>
+              <WhatsAppButton
+                text={whatsappMessages.bookVisit}
+                label="Book a Vet Visit"
+              />
               <WhatsAppButton
                 variant="outline"
                 text={whatsappMessages.guide(guide.title)}

@@ -15,8 +15,19 @@ export const USE_REAL_API = API_BASE_URL.length > 0;
 /** Simulated latency (ms) for the mock adapter, so loading states are real. */
 export const MOCK_LATENCY_MS = Number(process.env.NEXT_PUBLIC_MOCK_LATENCY_MS ?? 320);
 
-/** WhatsApp Business number in E.164 without the leading "+". */
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "919876543210";
+/**
+ * WhatsApp Business number in E.164 without the leading "+".
+ *
+ * The real number is the default rather than something a `.env` has to supply:
+ * for months the fallback here was the placeholder 919876543210, no `.env`
+ * existed, and the published site sent every visitor on 94 pages to a number
+ * nobody owns. A build that forgets its environment should still be correct.
+ *
+ * This is the Twilio-hosted "Tailish WhatsApp" sender. It carries WhatsApp
+ * only — SMS and voice are off on the account — so it must never appear behind
+ * a `tel:` link.
+ */
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "18508055553";
 
 export const WHATSAPP_DEFAULT_TEXT =
   process.env.NEXT_PUBLIC_WHATSAPP_DEFAULT_TEXT ??
@@ -34,7 +45,10 @@ export const siteConfig = {
   url: SITE_URL,
   city: "Indore",
   email: "care@tailish.in",
-  phone: "+91 98765 43210",
+  // No `phone`. Tailish has no voice line: the Twilio sender is WhatsApp-only,
+  // and the number that used to sit here was the 98765 43210 placeholder,
+  // published as if it were a support line. Reach-us routes through WhatsApp
+  // until there is a number that actually answers.
   address: "Vijay Nagar, Indore, Madhya Pradesh 452010",
   supportHours: "8:00 AM – 10:00 PM, all days",
 
@@ -59,9 +73,7 @@ export const siteConfig = {
     youtube: "https://youtube.com/@tailish",
     linkedin: "https://linkedin.com/company/tailish",
   },
-  stats: {
-    families: "5000+",
-    rating: "4.8/5",
-    cities: "50+",
-  },
+  // No `stats`. These read "5000+ families", "4.8/5 rating" and "50+ cities"
+  // on the published homepage before a single customer existed. Traction
+  // numbers go back only when they can be counted.
 } as const;

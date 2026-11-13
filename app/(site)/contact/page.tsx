@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/section";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/motion/reveal";
-import { ContactForm } from "@/components/forms/lead-forms";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { WhatsAppQR } from "@/components/whatsapp/whatsapp-qr";
 import { siteConfig } from "@/lib/config";
@@ -13,7 +12,7 @@ import { whatsappMessages } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Contact Tailish — talk to our care team",
-  description: `Reach the Tailish care team on WhatsApp, by phone on ${siteConfig.phone}, or by email at ${siteConfig.email}. Support hours ${siteConfig.supportHours}.`,
+  description: `Reach the Tailish care team on WhatsApp or by email at ${siteConfig.email}. Support hours ${siteConfig.supportHours}.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -24,13 +23,8 @@ const channels = [
     detail: "Fastest route to a person. Bookings, orders, records and care questions.",
     action: "Usually replies in minutes",
   },
-  {
-    icon: Phone,
-    title: siteConfig.phone,
-    detail: "Call the care desk if you'd rather talk it through.",
-    action: siteConfig.supportHours,
-    href: `tel:${siteConfig.phone.replace(/\s/g, "")}`,
-  },
+  // No phone channel. It advertised a care desk you could ring, on a number
+  // that was never ours. WhatsApp is the line that actually answers.
   {
     icon: Mail,
     title: siteConfig.email,
@@ -66,26 +60,34 @@ export default function ContactPage() {
                 <p className="text-sm font-semibold text-red-900">
                   If your pet needs help right now, don&apos;t use this form.
                 </p>
+                {/* This promised "a verified list with live phone numbers"
+                    behind a link to /nearby — a parked route backed by made-up
+                    clinics. In an emergency that is the worst possible dead
+                    end, so the claim and the link are both gone until there is
+                    a list that has actually been verified. */}
                 <p className="mt-0.5 text-sm leading-relaxed text-red-800/80">
-                  Go to a 24-hour emergency hospital. We keep a verified list with live phone
-                  numbers.
+                  Go straight to a 24-hour emergency veterinary hospital, or call your own vet.
+                  Don&apos;t wait for a reply here.
                 </p>
               </div>
             </div>
-            <Button asChild variant="danger" className="shrink-0">
-              <Link href="/nearby?type=emergency">Emergency vets near you</Link>
-            </Button>
           </Reveal>
 
           <div className="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
             <Reveal>
+              {/* The form that stood here validated your details, said
+                  "message received", and discarded them — nobody was on the
+                  other end. These two routes both reach a person. */}
               <h2 className="font-display text-2xl font-bold text-ink">Send us a message</h2>
               <p className="mt-2 text-sm text-muted">
-                Fill this in and we&apos;ll get back to you. For anything time-sensitive, WhatsApp is
-                quicker.
+                WhatsApp is the quickest way to reach us — it&apos;s where the care team works. For
+                anything that can wait, email is fine.
               </p>
-              <div className="mt-8">
-                <ContactForm />
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <WhatsAppButton size="lg" text={whatsappMessages.contact} />
+                <Button asChild size="lg" variant="outline">
+                  <a href={`mailto:${siteConfig.email}`}>Email {siteConfig.email}</a>
+                </Button>
               </div>
             </Reveal>
 

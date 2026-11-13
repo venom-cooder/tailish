@@ -3,22 +3,14 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, ShoppingBag, User, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { LogoLink, PawGlyph } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useCart } from "@/components/providers/cart-provider";
 import { WhatsAppGlyph } from "@/components/whatsapp/whatsapp-button";
 import { getWhatsAppLink, whatsappMessages } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
-import {
-  primaryNav,
-  resourcesNav,
-  shopNav,
-  vetCareNav,
-  vetCareSecondary,
-  type NavItem,
-} from "./nav-data";
+import { primaryNav, resourcesNav, type NavItem } from "./nav-data";
 
 /* ------------------------------------------------------------- dropdowns */
 
@@ -133,7 +125,6 @@ function DropdownItem({ item, compact }: { item: NavItem; compact?: boolean }) {
 
 export function SiteHeader() {
   const pathname = usePathname() ?? "/";
-  const { cart, setOpen: setCartOpen } = useCart();
   const [scrolled, setScrolled] = React.useState(false);
 
   // The menu records the route it was opened on, so navigating anywhere closes
@@ -188,42 +179,10 @@ export function SiteHeader() {
             className={cn("transition-all duration-300", scrolled ? "text-[1rem]" : "text-[1.1rem]")}
           />
 
+          {/* The Vet Care and Shop dropdowns lived here. Both listed routes
+              that are parked, and the vet-care one also quoted prices that
+              were never confirmed. */}
           <nav aria-label="Main" className="ml-2 hidden items-center lg:flex">
-            <NavDropdown label="Vet Care" href="/vet-care" wide>
-              <div className="grid grid-cols-2 gap-1">
-                {vetCareNav.map((item) => (
-                  <DropdownItem key={item.href} item={item} />
-                ))}
-              </div>
-              <div className="mt-1 flex flex-wrap gap-1 border-t border-hairline pt-2">
-                {vetCareSecondary.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="rounded-xl px-3 py-2 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-50"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </NavDropdown>
-
-            <NavDropdown label="Shop" href="/shop">
-              <div className="grid grid-cols-1 gap-0.5">
-                {shopNav.map((item) => (
-                  <DropdownItem key={item.href} item={item} compact />
-                ))}
-              </div>
-              <div className="mt-1 border-t border-hairline pt-2">
-                <Link
-                  href="/shop"
-                  className="block rounded-xl px-3 py-2 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-50"
-                >
-                  Browse everything in the shop →
-                </Link>
-              </div>
-            </NavDropdown>
-
             {primaryNav.map((item) => (
               <Link
                 key={item.href}
@@ -259,33 +218,18 @@ export function SiteHeader() {
               <WhatsAppGlyph className="size-5" />
             </a>
 
-            <button
-              type="button"
-              onClick={() => setCartOpen(true)}
-              aria-label={`Open cart — ${cart.itemCount} item${cart.itemCount === 1 ? "" : "s"}`}
-              className="relative grid size-10 place-items-center rounded-xl text-ink/80 transition-colors hover:bg-brand-50 hover:text-brand-700"
-            >
-              <ShoppingBag className="size-5" aria-hidden="true" />
-              {cart.itemCount > 0 ? (
-                <span className="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-accent-500 px-1 text-[0.65rem] font-bold tabular text-white">
-                  {cart.itemCount}
-                </span>
-              ) : null}
-            </button>
-
-            <Link
-              href="/app"
-              aria-label="Your account"
-              className="hidden size-10 place-items-center rounded-xl text-ink/80 transition-colors hover:bg-brand-50 hover:text-brand-700 sm:grid"
-            >
-              <User className="size-5" aria-hidden="true" />
-            </Link>
-
+            {/* The cart and account buttons are gone with the storefront and
+                the portal. The primary CTA opens WhatsApp, which is where a
+                request is actually picked up and answered. */}
             <Button asChild size="md" variant="gold" className="hidden rounded-2xl sm:inline-flex">
-              <Link href="/vet-care/book-visit">
+              <a
+                href={getWhatsAppLink({ text: whatsappMessages.bookVisit })}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <PawGlyph className="size-4.5" aria-hidden="true" />
                 Request Pet Care
-              </Link>
+              </a>
             </Button>
 
             <button
@@ -362,23 +306,13 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </Button>
         </div>
 
-        <MobileSection title="Vet care" items={[...vetCareNav, ...vetCareSecondary]} />
-        <MobileSection title="Shop" items={[{ label: "All products", href: "/shop" }, ...shopNav]} />
+        {/* The "Vet care", "Shop" and "Your account" sections went with their
+            routes. What is left is every page the site actually serves. */}
         <MobileSection
           title="Explore"
           items={[
             ...primaryNav,
-            { label: "About Tailish", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ]}
-        />
-        <MobileSection
-          title="Your account"
-          items={[
-            { label: "Dashboard", href: "/app" },
-            { label: "My pets", href: "/app/pets" },
-            { label: "Orders", href: "/app/orders" },
-            { label: "Sign in", href: "/login" },
+            ...resourcesNav.map(({ label, href }) => ({ label, href })),
           ]}
         />
 

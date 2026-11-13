@@ -14,9 +14,10 @@ import { Button } from "@/components/ui/button";
 import { Container, Section, SectionHeading } from "@/components/shared/section";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/motion/reveal";
-import { PartnerForm, WaitlistForm } from "@/components/forms/lead-forms";
 import { FinalCta } from "@/components/home/sections";
+import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { siteConfig } from "@/lib/config";
+import { whatsappMessages } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "About Tailish — guided pet care, built in Indore",
@@ -81,9 +82,7 @@ export default function AboutPage() {
         title="We started because nobody could find the vaccination card."
         description={`Tailish is a pet care company built in ${siteConfig.city} around a simple idea: the care is only as good as the record it leaves behind. We connect pet parents with registered veterinarians, and we keep the history so the next vet doesn't start from zero.`}
       >
-        <Button asChild size="lg">
-          <Link href="/vet-care/book-visit">Book a Vet Visit</Link>
-        </Button>
+        <WhatsAppButton size="lg" label="Book a Vet Visit" text={whatsappMessages.bookVisit} />
         <Button asChild size="lg" variant="outline">
           <Link href="#partners">Partner with us</Link>
         </Button>
@@ -167,8 +166,13 @@ export default function AboutPage() {
                   Tell us where you are. We open cities in the order pet parents ask for them, and
                   we&apos;ll message you on WhatsApp the week we arrive.
                 </p>
+                {/* Was a waitlist form that answered "you're on the list" and
+                    kept nothing. WhatsApp reaches someone. */}
                 <div className="mt-6">
-                  <WaitlistForm compact />
+                  <WhatsAppButton
+                    text={whatsappMessages.general}
+                    label="Tell us your city on WhatsApp"
+                  />
                 </div>
               </div>
             </Reveal>
@@ -178,11 +182,20 @@ export default function AboutPage() {
                 eyebrow="Partners"
                 eyebrowIcon={Handshake}
                 title="Work with Tailish."
-                description="We're looking for registered veterinarians, clinics, groomers and brands who care about doing this properly. Applications are reviewed within two working days."
+                description="We're looking for registered veterinarians, clinics, groomers and brands who care about doing this properly."
               />
 
+              {/* Was an application form that promised a review "within two
+                  working days" and stored nothing. The claim is gone from the
+                  heading above too — it could not be kept. */}
               <div className="mt-8 rounded-3xl border border-hairline bg-white p-7 shadow-soft">
-                <PartnerForm />
+                <p className="text-sm leading-relaxed text-muted">
+                  Message us on WhatsApp with who you are and what you do, and we&apos;ll take it
+                  from there.
+                </p>
+                <div className="mt-5">
+                  <WhatsAppButton text={whatsappMessages.partner} label="Partner with Tailish" />
+                </div>
               </div>
             </Reveal>
           </div>
@@ -199,7 +212,7 @@ export default function AboutPage() {
               Tailish Pet Care Private Limited
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/75">
-              {siteConfig.address} · {siteConfig.email} · {siteConfig.phone}
+              {siteConfig.address} · {siteConfig.email}
             </p>
             <p className="mt-4 text-sm leading-relaxed text-white/60">
               Tailish provides guided pet care and connects pet parents with independently

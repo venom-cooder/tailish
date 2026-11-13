@@ -1,13 +1,4 @@
-import { accountApi } from "./account";
-import { aiApi } from "./ai";
-import { authApi } from "./auth";
-import { commerceApi } from "./commerce";
 import { contentApi } from "./content";
-import { leadsApi } from "./leads";
-import { passportApi } from "./passport";
-import { petsApi } from "./pets";
-import { remindersApi } from "./reminders";
-import { servicesApi } from "./services";
 
 /**
  * The Tailish API client.
@@ -15,28 +6,26 @@ import { servicesApi } from "./services";
  * Import this, never `fetch` directly:
  *
  *   import { api } from "@/lib/api";
- *   const pets = await api.pets.list();
+ *   const guides = await api.content.listGuides();
  *
- * Backed by mock data until NEXT_PUBLIC_API_BASE_URL is set, at which point
- * every call below switches to REST against that origin. See lib/api/client.ts.
+ * Only `content` is left. The auth, pets, passport, account, services,
+ * commerce, reminders, ai and leads clients are in parked/ with the pages that
+ * called them: each was a mock adapter running in the visitor's browser, with
+ * nothing behind it. `leads` is worth singling out — its contact, waitlist and
+ * partner endpoints validated the form, answered "message received", and threw
+ * the submission away.
+ *
+ * Content is different: it reads the guides written for the site, which are
+ * real, and serves them from `lib/mock/content.ts` without pretending to
+ * persist anything.
+ *
+ * Restoring a client means restoring its real backend first — an AxisIQ
+ * Function behind Sites → Sign-in & API, with NEXT_PUBLIC_API_BASE_URL set so
+ * `call()` goes to REST rather than the mock branch. See parked/README.md.
  */
 export const api = {
-  auth: authApi,
-  account: accountApi,
-  pets: petsApi,
-  passport: passportApi,
-  ai: aiApi,
-  services: servicesApi,
-  commerce: commerceApi,
-  reminders: remindersApi,
   content: contentApi,
-  leads: leadsApi,
 };
 
 export { ApiError, toErrorMessage, setAuthToken, getAuthToken } from "./client";
-export { DEMO_OTP } from "./auth";
-export { allBrands } from "./commerce";
 export { guideCategories } from "./content";
-export { bookableDates } from "./services";
-export { deriveVaccinationStatus } from "./passport";
-export type { ProductQuery } from "./commerce";

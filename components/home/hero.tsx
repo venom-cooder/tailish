@@ -5,6 +5,7 @@ import { PawGlyph } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/shared/section";
 import { CareFinder } from "@/components/home/care-finder";
+import { getWhatsAppLink, whatsappMessages } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 const trustMarks = [
@@ -64,18 +65,29 @@ export function Hero() {
             </p>
 
             <div className="mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
+              {/* Both CTAs open WhatsApp. They used to open /vet-care pages
+                  whose booking forms submitted into a mock — the request was
+                  never received by anyone. */}
               <Button asChild size="lg" variant="brand" className="rounded-2xl">
-                <Link href="/vet-care/book-visit">
+                <a
+                  href={getWhatsAppLink({ text: whatsappMessages.bookVisit })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <PawGlyph className="size-5" aria-hidden="true" />
                   Request Pet Care
                   <ArrowRight className="size-4.5" aria-hidden="true" />
-                </Link>
+                </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-2xl bg-white/90">
-                <Link href="/vet-care/video-consult">
+                <a
+                  href={getWhatsAppLink({ text: whatsappMessages.videoConsult })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Video className="size-5" aria-hidden="true" />
                   Talk to a Vet Online
-                </Link>
+                </a>
               </Button>
             </div>
 

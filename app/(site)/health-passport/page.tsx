@@ -23,8 +23,7 @@ import { SourceBadge } from "@/components/shared/source-badge";
 import { Faq, FinalCta } from "@/components/home/sections";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
 import { WhatsAppQR } from "@/components/whatsapp/whatsapp-qr";
-import { mockPets, mockVaccinations } from "@/lib/mock/pets";
-import { addDays } from "@/lib/mock/clock";
+import { samplePet, sampleVaccinations } from "@/lib/sample-passport";
 import { whatsappMessages } from "@/lib/whatsapp";
 import type { RecordSource } from "@/lib/types";
 
@@ -125,9 +124,6 @@ const faqs = [
 ];
 
 export default function HealthPassportPage() {
-  const pet = mockPets[0];
-  const vaccinations = mockVaccinations.filter((v) => v.petId === pet.id);
-
   return (
     <>
       <PageHero
@@ -137,17 +133,27 @@ export default function HealthPassportPage() {
         title="Your pet's whole health story, in one place that travels."
         description="Vaccination cards get lost. Prescriptions end up in a drawer. The Health Passport keeps everything together, shows you where each fact came from, and makes it shareable the day you need it most."
         aside={
-          <HealthPassportCard
-            pet={pet}
-            vaccinations={vaccinations}
-            lastVisitDate={addDays(-3)}
-            href="/app/pet/?id=pet_01"
-          />
+          <figure>
+            <HealthPassportCard
+              pet={samplePet}
+              vaccinations={sampleVaccinations}
+              lastVisitDate="2026-02-14"
+              href=""
+            />
+            <figcaption className="mt-3 text-center text-xs text-white/70">
+              Example passport — not a real pet&apos;s record.
+            </figcaption>
+          </figure>
         }
       >
-        <Button asChild size="lg">
-          <Link href="/app/pets/new">Create a free passport</Link>
-        </Button>
+        {/* "Create a free passport" used to open the portal's add-pet form,
+            which wrote to a browser-local mock. A passport is created by
+            talking to Tailish on WhatsApp. */}
+        <WhatsAppButton
+          size="lg"
+          text={whatsappMessages.healthPassport}
+          label="Create a free passport"
+        />
         <WhatsAppButton
           size="lg"
           variant="outline"
@@ -248,9 +254,9 @@ export default function HealthPassportPage() {
                   </div>
                 ))}
 
-                <Button asChild variant="outline" className="w-full">
-                  <Link href="/p/?t=demo-passport">See a shared passport</Link>
-                </Button>
+                {/* "See a shared passport" opened /p/?t=demo-passport, a
+                    share-link page that read from the browser-local mock.
+                    Sharing is real once passports are. */}
               </div>
             </Reveal>
           </div>

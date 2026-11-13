@@ -127,9 +127,7 @@ export default function HowItWorksPage() {
         title="From a worry at 11 PM to a written care plan."
         description="Four steps, no waiting room, and a permanent record at the end of it. Here's exactly what happens at each stage."
       >
-        <Button asChild size="lg">
-          <Link href="/vet-care/book-visit">Book a Vet Visit</Link>
-        </Button>
+        <WhatsAppButton size="lg" text={whatsappMessages.bookVisit} label="Book a Vet Visit" />
         <WhatsAppButton
           size="lg"
           variant="outline"

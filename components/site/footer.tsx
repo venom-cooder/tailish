@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Lock, Mail, MapPin, Phone } from "lucide-react";
+import { Lock, Mail, MapPin } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import {
   FacebookIcon,
@@ -41,13 +41,12 @@ export function SiteFooter() {
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm">
-              <a
-                href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <Phone className="size-4 shrink-0 text-brand-300" aria-hidden="true" />
-                {siteConfig.phone}
-              </a>
+              {/* WhatsApp rather than a phone number: the Tailish sender does
+                  not take voice calls, so a tel: link would ring nowhere. */}
+              <WhatsAppLink
+                text={whatsappMessages.contact}
+                className="gap-2.5 text-sm text-white/70 hover:text-white"
+              />
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-2.5 transition-colors hover:text-white"

@@ -3,9 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, IdCard, ShoppingBag, Stethoscope, User } from "lucide-react";
+import { BookOpen, Home, IdCard, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useCart } from "@/components/providers/cart-provider";
 import { WhatsAppGlyph } from "@/components/whatsapp/whatsapp-button";
 import { getWhatsAppLink, whatsappMessageForPath } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -18,12 +17,14 @@ interface Tab {
   match?: string[];
 }
 
+// Four tabs, not five: Shop and You pointed at a storefront and a portal that
+// are parked, and Care at a vet-care section that is too. Everything here
+// resolves to a page that exists.
 const TABS: Tab[] = [
   { label: "Home", href: "/", icon: Home },
-  { label: "Care", href: "/vet-care", icon: Stethoscope, match: ["/how-it-works", "/nearby"] },
-  { label: "Shop", href: "/shop", icon: ShoppingBag, match: ["/cart", "/checkout"] },
-  { label: "Passport", href: "/health-passport", icon: IdCard, match: ["/guides"] },
-  { label: "You", href: "/app", icon: User, match: ["/login"] },
+  { label: "How it works", href: "/how-it-works", icon: Sparkles },
+  { label: "Passport", href: "/health-passport", icon: IdCard },
+  { label: "Guides", href: "/guides", icon: BookOpen },
 ];
 
 /** The bar's own height plus its inset — pages reserve this much bottom room. */
@@ -39,7 +40,6 @@ export const MOBILE_TAB_BAR_SPACER = "pb-[6.5rem] lg:pb-0";
  */
 export function MobileTabBar() {
   const pathname = usePathname() ?? "/";
-  const { cart } = useCart();
 
   const isActive = (tab: Tab) => {
     const routes = [tab.href, ...(tab.match ?? [])];
@@ -63,7 +63,6 @@ export function MobileTabBar() {
         >
           {TABS.map((tab) => {
             const active = isActive(tab);
-            const showCount = tab.href === "/shop" && cart.itemCount > 0;
 
             return (
               <Link
@@ -83,11 +82,6 @@ export function MobileTabBar() {
                   )}
                 >
                   <tab.icon className="size-[1.1rem]" aria-hidden="true" />
-                  {showCount ? (
-                    <span className="absolute -right-1 -top-0.5 grid min-w-4 place-items-center rounded-full bg-accent-500 px-1 text-[0.6rem] font-bold tabular leading-4 text-white">
-                      {cart.itemCount}
-                    </span>
-                  ) : null}
                 </span>
                 <span className="w-full truncate text-center text-[0.65rem] font-medium leading-tight">
                   {tab.label}

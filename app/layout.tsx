@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Playfair_Display, Sora } from "next/font/google";
-import { CartProvider } from "@/components/providers/cart-provider";
-import { SessionProvider } from "@/components/providers/session-provider";
-import { CartDrawer } from "@/components/shop/cart-drawer";
 import { WhatsAppFloat } from "@/components/whatsapp/whatsapp-float";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
@@ -96,18 +93,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        <SessionProvider>
-          <CartProvider>
-            {children}
-            <CartDrawer />
-            {/* Deliberately not inside <Suspense>: the float reads the current
-                route for its prefilled message, and wrapping it postponed the
-                boundary so React left the button parked in its hidden
-                streaming holder — invisible on every statically rendered
-                page. Reading usePathname() needs no boundary here. */}
-            <WhatsAppFloat />
-          </CartProvider>
-        </SessionProvider>
+        {/* No SessionProvider or CartProvider here any more. The session was a
+            mock that signed anyone in with the code 6318, and the cart fed a
+            checkout with no payment provider behind it. Both are in parked/
+            until there is a real user pool and a real payment integration. */}
+        {children}
+        {/* Deliberately not inside <Suspense>: the float reads the current
+            route for its prefilled message, and wrapping it postponed the
+            boundary so React left the button parked in its hidden streaming
+            holder — invisible on every statically rendered page. Reading
+            usePathname() needs no boundary here. */}
+        <WhatsAppFloat />
 
         {/* Tailish agent chat bubble, served by AxisIQ. Loaded after the page
             is interactive so it never competes with first paint. The agent
